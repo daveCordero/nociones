@@ -4,8 +4,13 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- android -->
-<!--<meta name="viewport" content="height=600, initial-scale=.33, maximum-scale=.33" />-->
-<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=1, maximum-scale=1">
+<!--<meta name="viewport" content="height=600, initial-scale=.33, maximum-scale=.33" />
+<meta name="viewport" content="height=600, user-scalable=yes, initial-scale=.4, maximum-scale=.4"> funciona en browser no al 100%
+<meta name="viewport" content="height=device-height">
+<meta name="viewport" content="initial-scale=.2, maximum-scale=.2">
+<meta name="viewport" content="height=1000, user-scalable=no, initial-scale=0.61, maximum-scale=0.61">-- >
+<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.61, maximum-scale=0.61"> <!--funciona en chrome-->
+<meta name="viewport" content="width=1050px, target-densitydpi=device-dpi, user-scalable=no, initial-scale=0.7, maximum-scale=0.7">
 
 <title>Juguemos con las nociones matemáticas</title>
 
@@ -259,10 +264,10 @@ $(document).ready(function() {
 	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
 	// fin precarga
 	
-	//previene rebote iOS
+	/*previene rebote iOS
 	document.body.addEventListener('touchmove', function(event) {
 	  event.preventDefault();
-	}, false);
+	}, false);*/
 	//fin previene rebote iOS
 	
 	if (window.orientation == 0){

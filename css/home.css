@@ -283,7 +283,7 @@ body {
 	height:52px;
 	padding:0px;
 	
-	margin:200px 0px 0px -60px;
+	margin:215px 0px 0px -90px;
 	
 	-webkit-border-radius:6px;
 	-moz-border-radius:6px;
@@ -356,7 +356,7 @@ body {
 #welcome {
 	width:280px;
 	padding:0px 20px 10px 20px;
-	margin:-214px 0px 0px -360px;
+	margin:-100px 0px 0px -360px;
 }
 
 h3 {
