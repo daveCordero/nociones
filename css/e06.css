@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-attachment:fixed;
+	
+	background-color:#BBD6DA;
+	background-image:url(../img/bg_grad_01.jpg);
+	
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	background-size:cover;
+	-moz-background-size:cover;
+	-webkit-background-size:cover;
+}
+
+#general { /* contiene objetos evita scroll */
+}
+
+#tituloApp {
+	font-size:48px;
+	line-height:54px;
+}
+
+#instru {
+	font-size:38px;
+	line-height:42px;
+}
+
+
+.icoInfoPeq {
+	left:0px;
+}
+.icoHomePeq {
+	right:0px;
+}
+.icoPeq {
+	position:absolute;
+	top:0px;
+	margin-top:0px;
+}
+
+#container {
+	background:#999;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.pantallas {
+	/*background:#666;*/
+	width:960px;
+	height:600px;
+	margin:-580px auto 0px auto;
+	
+	-webkit-border-radius:0px;
+	-moz-border-radius:0px;
+	-khtml-border-radius:0px;
+	border-radius:0px;
+}
+
+.retro {
+	margin:-200px 0px 0px -315px;
+}
+
+#pantalla00 { /* contiene a #welcome */
+	background:none !important;
+	display:block;
+	margin:0px auto 0px auto;
+}
+
+#respuestaOk {
+	/*background:none;*/
+}
+
+.txBoxes {
+	background-color:#C7E7EB;
+	background-repeat:no-repeat;
+	display:none;
+	position:absolute;
+	
+	top:0px;
+	left:50%;
+	
+	width:530px;
+	padding:20px;
+	margin:0px 0px 0px -265px;
+	
+	font-size:40px;
+	line-height:42px;
+	color:#668092;
+	text-align:center;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+	
+	z-index:1603;
+}
+

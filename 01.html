@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Nociones de tamaño</title>
+
+
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/e01.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/googleapis/jquery.min.js"></script>
+<script type="text/javascript" src='js/jquery.transit.min.js'></script>
+
+
+<script language="javascript" type="text/javascript">
+
+var proxPantalla = 1; //valor inicial, incrementa con respuesta Ok
+
+var audioElement = document.createElement('audio');
+audioElement.setAttribute('autoplay', 'autoplay');
+$.get();
+
+function aubtn() {
+	audioElement.setAttribute('src', 'audio/plop.ogg');
+	audioElement.play();
+}
+
+$(window).load(function(){
+	$("#pre-load-web").fadeOut(1000,function(){
+		//eliminamos la capa de precarga
+	    $(this).remove();
+	    //permitimos scroll
+	    $("body").css({"overflow-y":"auto"});
+	});        
+});
+
+function nextPage(){
+	window.location.href = proxEjercicio;
+}
+
+function flipPage(){
+	$('#contenido').transition({
+		perspective: '1000px',
+		rotateY: '180deg',
+		opacity: 0,
+	}, 500, 'out',function(){nextPage();});
+}
+
+function closeWelcome() {
+	$("#pantalla00").animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	//alert('pantallaActual: ' + proxPantalla);
+	switch(proxPantalla) {
+		
+		case 1:
+			pantallaActual = '#pantalla01';
+			pantintro();
+		break;
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+		case 5:
+			pantallaActual = '#pantalla05';
+		break;
+		
+		case 6:
+			pantallaActual = '#pantalla06';
+		break;
+		
+	} //fin switch
+	$(pantallaActual).css({ display:'block' });
+	$(pantallaActual).animate({ 'margin-top':10 }, 150 );
+}
+
+var pantallaActual = '';
+
+function goInfo() {
+	//alert('Pantalla Actual: ' + proxPantalla);
+	switch(proxPantalla) { //devuelve valor Pantalla Actual
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+		case 5:
+			pantallaActual = '#pantalla05';
+		break;
+		
+		case 6:
+			pantallaActual = '#pantalla06';
+		break;
+		
+	} //fin switch
+	$(pantallaActual).animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	$("#pantalla00").css({ display:'block' });
+	$("#pantalla00").animate({ 'margin-top':10 }, 300);
+}
+
+function tapNoOk() {
+	//alert('tapNoOk');
+	$("#respuestaNoOk").fadeIn(300);
+}
+function tapOk() {
+	$("#respuestaOk").fadeIn(300);
+}
+function closeNoOk() {
+	$("#respuestaNoOk").fadeOut(100);
+}
+function closeOk() {
+	$("#respuestaOk").fadeOut(100);
+	switch(proxPantalla) {
+		case 2:
+			pantallaChao   = '#pantalla02';
+			pantallaViene  = '#pantalla03';
+			pantCamara();
+		break;
+		
+		case 3:
+			pantallaChao   = '#pantalla03';
+			pantallaViene  = '#pantalla04';
+			pantTren();
+		break;
+		
+		case 4:
+			pantallaChao   = '#pantalla04';
+			pantallaViene  = '#pantalla05';
+			pantAlfombra();
+		break;
+		
+		case 5:
+			pantallaChao   = '#pantalla05';
+			pantallaViene  = '#pantalla06';
+			pantCohete();
+		break;
+		
+		case 6:
+			pantallaChao   = '#pantalla06';
+			pantallaViene  = '#pantalla01';
+			pantFinal();
+		break;
+		
+	} //fin switch
+	proxPantalla++; //alert ('proxPantalla: ' + proxPantalla);
+	var timerPantallaChao = setTimeout(function() {
+		$(pantallaChao).animate({ 'margin-top':650 }, 200, function(){ $(this).css({ display:'none' }); });
+		clearTimeout(timerPantallaChao);
+	}, 300);
+	var timerPantallaViene = setTimeout(function() {
+		$(pantallaViene).css({ display:'block' });
+		$(pantallaViene).animate({ 'margin-top':10 }, 200 );
+		clearTimeout(timerPantallaViene);
+	}, 500);
+}
+
+function pantintro() {
+	var timerPant01 = setTimeout(function() {
+		$("#pantalla01").fadeOut(500);
+		clearTimeout(timerPant01);
+	}, 1000);
+	var timerPant02 = setTimeout(function() {
+		$('#pantalla02').css({ display:'block' });
+		$('#pantalla02').animate({ 'margin-top':10 }, 150 );
+		clearTimeout(timerPant02);
+	}, 1500);
+	var timerTxOso = setTimeout(function() {
+		$("#txOso").fadeIn(300);
+		clearTimeout(timerTxOso);
+	}, 2000);
+	var timerTxMono = setTimeout(function() {
+		$("#tagMono").fadeIn(100);
+		$('#imgMono').css({ display:'block' });
+		$('#imgMono').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxMono);
+	}, 2100);
+	var timerTxCuadro = setTimeout(function() {
+		$("#tagCuadro").fadeIn(100);
+		$('#imgCuadro').css({ display:'block' });
+		$('#imgCuadro').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxCuadro);
+	}, 2200);
+	var timerTxCastle = setTimeout(function() {
+		$("#tagCastle").fadeIn(100);
+		$('#imgCastle').css({ display:'block' });
+		$('#imgCastle').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxCastle);
+	}, 2300);
+	proxPantalla++;
+}
+
+function pantCamara() {
+	var timerTxCamara = setTimeout(function() {
+		$("#txCamara").fadeIn(300);
+		clearTimeout(timerTxCamara);
+	}, 1000);
+	var timerTxTarro = setTimeout(function() {
+		$("#tagTarro").fadeIn(300);
+		$('#imgTarro').css({ display:'block' });
+		$('#imgTarro').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxTarro);
+	}, 1100);
+	var timerTxLibro = setTimeout(function() {
+		$("#tagLibro").fadeIn(300);
+		$('#imgLibro').css({ display:'block' });
+		$('#imgLibro').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxLibro);
+	}, 1200);
+	var timerTxCubo = setTimeout(function() {
+		$("#tagCubo").fadeIn(300);
+		$('#imgCubo').css({ display:'block' });
+		$('#imgCubo').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxCubo);
+	}, 1300);
+}
+
+function pantTren() {
+	var timerTxTren = setTimeout(function() {
+		$("#txTren").fadeIn(300);
+		clearTimeout(timerTxTren);
+	}, 1000);
+	var timerTxCamion = setTimeout(function() {
+		$("#tagCamion").fadeIn(300);
+		$('#imgCamion').css({ display:'block' });
+		$('#imgCamion').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxCamion);
+	}, 1100);
+	var timerTxTrompo = setTimeout(function() {
+		$("#tagTrompo").fadeIn(300);
+		$('#imgTrompo').css({ display:'block' });
+		$('#imgTrompo').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxTrompo);
+	}, 1200);
+	var timerTxArtur = setTimeout(function() {
+		$("#tagArtur").fadeIn(300);
+		$('#imgArtur').css({ display:'block' });
+		$('#imgArtur').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxArtur);
+	}, 1300);
+}
+
+function pantAlfombra() {
+	var timerTxAlfom = setTimeout(function() {
+		$("#txAlfombra").fadeIn(300);
+		clearTimeout(timerTxAlfom);
+	}, 1000);
+	var timerTxSillon = setTimeout(function() {
+		$("#tagSillon").fadeIn(300);
+		$('#imgSillon').css({ display:'block' });
+		$('#imgSillon').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxSillon);
+	}, 1100);
+	var timerTxCuadro2 = setTimeout(function() {
+		$("#tagCuadro2").fadeIn(300);
+		$('#imgCuadro2').css({ display:'block' });
+		$('#imgCuadro2').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxCuadro2);
+	}, 1200);
+	var timerTxVentana = setTimeout(function() {
+		$("#tagVentana").fadeIn(300);
+		$('#imgVentana').css({ display:'block' });
+		$('#imgVentana').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxVentana);
+	}, 1300);
+}
+
+function pantCohete() {
+	var timerTxCohete = setTimeout(function() {
+		$("#txCohete").fadeIn(300);
+		clearTimeout(timerTxCohete);
+	}, 1000);
+	var timerTxTren2 = setTimeout(function() {
+		$("#tagTren").fadeIn(300);
+		$('#imgTren').css({ display:'block' });
+		$('#imgTren').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxTren2);
+	}, 1100);
+	var timerTxOso2 = setTimeout(function() {
+		$("#tagOso").fadeIn(300);
+		$('#imgOso').css({ display:'block' });
+		$('#imgOso').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxOso2);
+	}, 1200);
+	var timerTxArtur3 = setTimeout(function() {
+		$("#tagArtur2").fadeIn(300);
+		$('#imgArtur2').css({ display:'block' });
+		$('#imgArtur2').animate({ 'margin-top':0 }, 100 );
+		clearTimeout(timerTxArtur3);
+	}, 1300);
+}
+
+function pantFinal() {
+	var timerPantFinal = setTimeout(function() {
+		proxEjercicio = '02.html';
+		flipPage();
+		clearTimeout(timerPantFinal);
+	}, 1000);
+}
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  //alert(window.orientation); //Announce the new orientation number
+  if (window.orientation == 0){
+	  $("#turnScreen").fadeIn(0);
+  }
+  /*chrome no funciona en esta orientacion
+  if (window.orientation == 180){
+	  $("#turnScreen").fadeIn(0);
+  }*/
+  if (window.orientation == 90){
+	  $("#turnScreen").fadeOut(0);
+  }
+  if (window.orientation == -90){
+	  $("#turnScreen").fadeOut(0);
+  }
+}, false);
+
+$(document).ready(function() {
+	
+	<!-- Carga imagenes :hover al inicio -->
+	/*if (document.images){
+		//
+		/*
+		foto1 = new Image();
+		foto1.src = "assets/ejer_07_top_dino2.png";* /
+	}*/
+	<!-- fin Carga imagenes -->
+	
+	// precarga
+	//eliminamos el scroll de la pagina
+	$("body").css({"overflow-y":"hidden"});
+	//guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+	var alto=$(window).height();
+	//agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+	$("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='img/preload35.gif' /></div>");
+	//le damos el alto
+	$("#pre-load-web").css({height:alto+"px"});
+	//esta sera la capa que esta dento de la capa que muestra un gif
+	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
+	// fin precarga
+	
+	if (window.orientation == 0){
+		$("#turnScreen").fadeIn(0);
+	}
+	
+	/* modal dialogs */
+	//select all the a tag with name equal to modal
+	$('a[name=modal]').click(function(e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		//Get the A tag
+		var id = $(this).attr('href');
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(300);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(300); 
+	
+	});
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+
+	$(window).resize(function () {
+	 
+ 		var box = $('#boxes .window');
+ 
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+      
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+               
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        box.css('top',  winH/2 - box.height()/2);
+        box.css('left', winW/2 - box.width()/2);
+	 
+	});
+	/* fin modal dialogs */
+	
+}); <!--/fin document ready-->
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="contenido">
+	
+    <div id="general">
+		
+		<div id="respuestaOk" class="pantallas">
+            <div class="retro">
+                <div id="icoOk" class="icoGrande"></div>
+                <a id="icoClose" class="icoGrande" onclick="closeOk();" href="javascript:void(0)"></a>
+                Seleccionó de forma correcta los objetos según el tamaño.
+            </div><!--/retro-->
+            <a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:70px;"></a>
+        </div><!--/respuestaOk-->
+		
+		<div id="respuestaNoOk" class="pantallas">
+            <div class="retro">
+                <div id="icoNoOk" class="icoGrande"></div>
+                <a id="icoClose" class="icoGrande" onclick="closeNoOk();" href="javascript:void(0)"></a>
+                Seleccionó de forma incorrecta los objetos según el tamaño.
+            </div><!--/retro-->
+            <a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:70px;"></a>
+        </div><!--/respuestaNoOk-->
+		
+		<div id="pantalla06" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+			
+			<div id="txCohete" class="txBoxes">El cohete es más grande que</div>
+            
+            <a id="imgTren" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapOk();"></a>
+            <a id="imgOso" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgArtur2" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            
+            <div id="tagTren" class="tagTexto tag1">
+				El tren
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagOso" class="tagTexto tag2">
+				El oso
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagArtur2" class="tagTexto tag3">
+				La arturito
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			
+		</div><!--/fin pantalla06-->
+		
+        <div id="pantalla05" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+			
+            <div id="txAlfombra" class="txBoxes">La alfombra es tan pequeña como</div>
+            
+            <a id="imgSillon" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgCuadro2" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapOk();"></a>
+            <a id="imgVentana" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            
+            <div id="tagSillon" class="tagTexto tag1">
+				El sillón
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagCuadro2" class="tagTexto tag2">
+				El cuadro
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagVentana" class="tagTexto tag3">
+				La ventana
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			
+		</div><!--/fin pantalla05-->
+		
+		<div id="pantalla04" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+		
+			<div id="txTren" class="txBoxes">El tren es más pequeño que</div>
+            
+            <a id="imgCamion" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgTrompo" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgArtur" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapOk();"></a>
+            
+            <div id="tagCamion" class="tagTexto tag1">
+				El camión
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagTrompo" class="tagTexto tag2">
+				El trompo
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            <div id="tagArtur" class="tagTexto tag3">
+				El arturito
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            
+         </div><!--/fin pantalla04-->
+         
+         <div id="pantalla03" class="pantallas">
+         	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+         	
+			<div id="txCamara" class="txBoxes">La cámara es menos grande que</div>
+            
+            <a id="imgTarro" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapOk();"></a>
+            <a id="imgLibro" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgCubo" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            
+            <div id="tagTarro" class="tagTexto tag1">
+				El tarro
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			<div id="tagLibro" class="tagTexto tag2">
+				El libro
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			<div id="tagCubo" class="tagTexto tag3">
+				El cubo
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+            
+		</div><!--/fin pantalla03-->
+         
+		<div id="pantalla02" class="pantallas">
+            
+			<a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+			
+			<div id="txOso" class="txBoxes">El oso es tan grande como</div>
+            
+			<a id="imgMono" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgCuadro" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapNoOk();"></a>
+            <a id="imgCastle" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapOk();"></a>
+			
+			<div id="tagMono" class="tagTexto tag1">
+				El monopatín
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			<div id="tagCuadro" class="tagTexto tag2">
+				El cuadro
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			<div id="tagCastle" class="tagTexto tag3">
+				El castillo
+				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
+			</div>
+			
+		</div><!--/fin pantalla02-->
+		
+        <div id="pantalla01" class="pantallas"></div><!--/fin pantalla01-->
+        
+        <div id="pantalla00" class="pantallas">
+            
+            <div id="welcome">
+                
+                <div id="icoInfo" class="icoGrande"></div>
+                <a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
+                
+                <div id="tituloApp">Nociones de tamaño</div>
+                <div id="instru">Seleccione el objeto que corresponde según lo que se le pregunta</div>
+				
+			</div><!--/fin welcome-->
+            
+			<a href="#dialog2" name="modal" id="logoAbajoLPT"></a>
+			
+		</div><!--/fin pantalla00-->
+        
+	</div><!--/fin general-->
+	
+    <!--
+	<div id="boxNext">
+		
+		<h2>¡Felicidades!</h2>
+		<br />
+		Seleccionó correctamente los elementos.
+        <br />
+        Pulse el botón para continuar.
+        <br /><br />
+        <a href="javascript:var proxEjercicio = '02.html'" onClick="flipPage();" class="nextbtn">Siguiente</a>
+		
+	</div><!-- fin boxNext -->
+	
+	<div id="boxes"><!-- modal -->
+		<div id="dialog2" class="window">
+			
+			<img src="img/logo_lpt.png" width="384" height="83" alt="Libros para Todos | Grupo Nación" id="logoCreditos" />
+			<br /><br />
+			<div id="creditosH">
+				Libros para todos Grupo Nación &reg;
+				<br />
+				Contáctenos 800 366	2636 &bull; <a href="mailto:librosparatodoscr@nacion.com" style="color:#09C;">librosparatodoscr@nacion.com</a>
+				<br />
+				<a href="http://www.librosparatodoscr.com" target="_blank">www.librosparatodoscr.com</a>
+			</div><!-- fin creditosH -->
+			
+			<div id="creditosB">
+				<strong style="color:#09C;">Edici&oacute;n</strong> Grupo Naci&oacute;n GN S.A. 
+				&bull;
+				<strong style="color:#09C;">Gerente Corporativa de Estrategia</strong> Elvira Sabor&iacute;o Dobles
+				&bull;
+				<strong style="color:#09C;">Jefe de Libros para Todos</strong> Hanie Cordero Calder&oacute;n
+				&bull;
+				<strong style="color:#09C;">Supervisor Editorial</strong> Pamela Le&oacute;n C&eacute;spedes 
+				&bull;
+				<strong style="color:#09C;">Editora Ejecutiva</strong> D&eacute;bora Rojas Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Coordinador de dise&ntilde;o</strong> Laura V&aacute;zques Alvarado
+				&bull;
+				<strong style="color:#09C;">Dise&ntilde;o</strong> Carlos Blanco Alvarado
+				&bull;
+				<strong style="color:#09C;">Ilustraci&oacute;n</strong> Sandra Ardila Z&uacute;&ntilde;iga / Ang&eacute;lica Ruiz Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Programaci&oacute;n</strong> David Herrera Cordero
+			</div><!-- fin creditosB -->
+			
+			<div id="creditosB" style="border-bottom:none;">
+				Quedan reservados los derechos sobre la presente edición.
+				Se prohíbe su reproducción sin el permiso previo y por escrito de <strong>Grupo Nación GN S.A.</strong>
+				<br /><br />
+				Las fotografías utilizadas en este material tienen fines educativos / Fotografías: www.shutterstock.com &bull; www.thinkstock.com <!--&bull; Archivo Grupo Nación GN S.A.-->
+			</div><!-- fin creditosB -->
+			
+			<a  href="javascript:void(0)" class="close" id="btCloseCredits"></a>
+		</div>
+		<!-- Mask to cover the whole screen -->
+		<div id="mask"></div>
+	</div><!-- fin boxes modal -->
+
+</div><!-- fin contenido -->
+
+<div id="turnScreen"></div>
+
+<script language="Javascript">
+	document.oncontextmenu = function(){return false};
+	document.onselectstart = function(){return false};
+	//document.onkeydown = function(){return false};
+</script>
+
+
+</body>
+</html>

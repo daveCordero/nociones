@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-attachment:fixed;
+	
+	background-color:#BBD6DA;
+	background-image:url(../img/bg_grad_01.jpg);
+	
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	background-size:cover;
+	-moz-background-size:cover;
+	-webkit-background-size:cover;
+}
+
+#general { /* contiene objetos evita scroll */
+	/*background:#FFF;*/
+}
+
+.pantallas {
+	width:960px;
+	height:600px;
+	margin:-650px auto 0px auto;
+	/*margin:-580px auto 0px auto;*/
+}
+
+#pantalla00 { /* contiene a #welcome */
+	background:none;
+	display:block;
+	margin-top:0px;
+}
+
+.txBoxes {
+	background-color:#C7E7EB;
+	display:none;
+	
+	position:absolute;
+	top:105px;
+	right:0px;
+	
+	width:330px;
+	padding:20px;
+	
+	font-size:40px;
+	line-height:42px;
+	color:#668193;
+	text-align:center;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border-radius:20px;
+}
+
+.imgObjeto {
+	/*background-color:#FFF;*/
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	display:none;
+	position:absolute;
+}
+.imgObjeto:hover {
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity:0.8;
+	opacity:0.8;
+}
+
+.marca {
+	background-position:top left;
+	background-repeat:no-repeat;
+	display:none;
+	position:absolute;
+	overflow:visible;
+	top:50%;
+	left:50%;
+	width:48px;
+	height:48px;
+	margin:-24px 0px 0px -24px;
+}
+.marcaOk {
+	background-image:url(../img/e02/marcaOk.png);
+}
+.marcaNoOk {
+	background-image:url(../img/e02/marcaNoOk.png);
+}
+
+.imgFoca {
+	background-image:url(../img/e02/img_foca.png);
+	top:379px;
+	left:75px;
+	width:167px;
+	height:200px;
+}
+.imgYama {
+	background-image:url(../img/e02/img_yama.png);
+	top:215px;
+	left:125px;
+	width:122px;
+	height:146px;
+}
+.imgHorse {
+	background-image:url(../img/e02/img_horse.png);
+	top:180px;
+	left:0px;
+	width:114px;
+	height:142px;
+}
+.imgCaracol1 {
+	background-image:url(../img/e02/img_caracol1.png);
+	top:450px;
+	left:0px;
+	width:70px;
+	height:46px;
+}
+.imgBird1 {
+	background-image:url(../img/e02/img_bird1.png);
+	top:60px;
+	left:30px;
+	width:51px;
+	height:43px;
+}
+.imgBird2 {
+	background-image:url(../img/e02/img_bird2.png);
+	top:110px;
+	left:0px;
+	width:64px;
+	height:61px;
+}
+.imgMari {
+	background-image:url(../img/e02/img_mari.png);
+	top:105px;
+	left:180px;
+	width:57px;
+	height:56px;
+}
+.imgAvestruz {
+	background-image:url(../img/e02/img_avestruz.png);
+	top:65px;
+	left:260px;
+	width:101px;
+	height:157px;
+}
+.imgPig {
+	background-image:url(../img/e02/img_pig.png);
+	top:130px;
+	left:388px;
+	width:91px;
+	height:107px;
+}
+.imgCow {
+	background-image:url(../img/e02/img_cow.png);
+	top:55px;
+	left:480px;
+	width:157px;
+	height:130px;
+}
+.imgAbeja {
+	background-image:url(../img/e02/img_abeja.png);
+	top:240px;
+	left:415px;
+	width:48px;
+	height:44px;
+}
+.imgPeri {
+	background-image:url(../img/e02/img_peri.png);
+	top:50px;
+	left:640px;
+	width:48px;
+	height:66px;
+}
+.imgCaracol2 {
+	background-image:url(../img/e02/img_caracol2.png);
+	top:272px;
+	left:587px;
+	width:53px;
+	height:41px;
+}
+.imgRana {
+	background-image:url(../img/e02/img_rana.png);
+	top:313px;
+	left:560px;
+	width:77px;
+	height:66px;
+}
+.imgFlor2 {
+	background-image:url(../img/e02/img_flor2.png);
+	top:315px;
+	left:718px;
+	width:85px;
+	height:56px;
+}
+.imgPez2 {
+	background-image:url(../img/e02/img_pez2.png);
+	top:412px;
+	left:656px;
+	width:89px;
+	height:58px;
+}
+.imgTortu {
+	background-image:url(../img/e02/img_tortu.png);
+	top:412px;
+	left:790px;
+	width:92px;
+	height:87px;
+}
+.imgCoco {
+	background-image:url(../img/e02/img_coco.png);
+	top:515px;
+	left:560px;
+	width:205px;
+	height:71px;
+}
+.imgFlor3 {
+	background-image:url(../img/e02/img_flor3.png);
+	top:506px;
+	left:410px;
+	width:126px;
+	height:86px;
+}
+.imgPez1 {
+	background-image:url(../img/e02/img_pez1.png);
+	top:470px;
+	left:270px;
+	width:100px;
+	height:72px;
+}
+.imgFlor1 {
+	background-image:url(../img/e02/img_flor1.png);
+	top:545px;
+	left:245px;
+	width:79px;
+	height:54px;
+}
+.imgFlor4 {
+	background-image:url(../img/e02/img_flor4.png);
+	top:350px;
+	left:365px;
+	width:112px;
+	height:99px;
+}
+.imgFlor5 {
+	background-image:url(../img/e02/img_flor5.png);
+	top:382px;
+	left:496px;
+	width:75px;
+	height:65px;
+}
+

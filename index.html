@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- android -->
+<meta name="viewport" content="height=600px, initial-scale=.4, maximum-scale=.4" />
+
+<title>Juguemos con las nociones matemáticas</title>
+
+
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/home.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/googleapis/jquery.min.js"></script>
+<script type="text/javascript" src='js/jquery.transit.min.js'></script>
+<script type="text/javascript" src="js/jQueryRotate.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+var audioElement = document.createElement('audio');
+audioElement.setAttribute('autoplay', 'autoplay');
+$.get();
+
+function aubtn() {
+	audioElement.setAttribute('src', 'audio/plop.ogg');
+	audioElement.play();
+}
+
+$(window).load(function(){
+	$("#pre-load-web").fadeOut(1000,function(){
+		//eliminamos la capa de precarga
+	    $(this).remove();
+	    //permitimos scroll
+	    $("body").css({"overflow-y":"auto"});
+	});        
+});
+
+var rotation = function (){
+   $("#ex01bola").rotate({
+      angle:0, 
+      animateTo:360, 
+      callback: rotation,
+      easing: function (x,t,b,c,d){        // t: current time, b: begInnIng value, c: change In value, d: duration
+          return c*(t/d)+b;
+      }
+   });
+}
+
+function bola() {
+	if(bolaOn == true) {
+		$("#ex01box1").animate( {
+			'filter':'alpha(opacity=30)',
+			'-moz-opacity':0.5,
+			'-khtml-opacity':0.5,
+			'opacity':0.5,
+			top:334,
+		},500);
+		$("#ex01box1").stop();
+		$("#ex01linea1").fadeIn();
+		dinoOn = false;
+		poloOn = true;
+		var nextFoto = setTimeout("$('#ex01box2').fadeIn()",600);
+		poloUp();
+	} else {
+		$("#ex01dino .ex01icoNoOk").fadeIn();
+		var noOkOut = setTimeout("$('#ex01dino .ex01icoNoOk').fadeOut()",600);
+	}
+}
+
+function globoUp() {
+	$("#ex01globo").animate( {
+		'top':76,
+	},1200,function(){globoDown();});
+}
+function globoDown() {
+	$("#ex01globo").animate( {
+		'top':84,
+	},900,function(){globoUp();});
+}
+function birdUp() {
+	$("#ex01bird").rotate({animateTo:15});
+	$("#ex01bird").animate( {
+		'top':23,
+		//'left':625,
+	},1200,function(){birdBack();});
+}
+function birdBack() {
+	$("#ex01bird").animate( {
+		'left':609,
+	},1000,function(){birdFront();});
+}
+function birdFront() {
+	$("#ex01bird").rotate({animateTo:0});
+	$("#ex01bird").animate( {
+		'left':619,
+		'top':33,
+	},1000,function(){birdEspera();});
+}
+function birdEspera() {
+	$("#ex01bird").animate( {
+		'left':619,
+		'top':33,
+	},2000,function(){birdUp();});
+}
+
+function cometaUp() {
+	$("#ex01cometa").animate( {
+		'left':590,
+		'top':205,
+	},1500,function(){cometaDown();});
+}
+function cometaDown() {
+	$("#ex01cometa").animate( {
+		'left':605,
+		'top':201,
+	},1500,function(){cometaUp();});
+}
+
+function conoUp() {
+	$("#ex01cono").rotate({animateTo:-5});
+	$("#ex01cono").animate( {
+		'top':372,
+	},1800,function(){conoDown();});
+}
+function conoDown() {
+	$("#ex01cono").rotate({animateTo:0});
+	$("#ex01cono").animate( {
+		'top':382,
+	},1800,function(){conoUp();});
+}
+
+function bolaOver() {
+	$('#homePoptamano').fadeIn(50);
+	globoOut();
+	birdOut();
+	cometaOut();
+	conoOut();
+	aubtn();
+}
+function bolaOut() {
+	$('#homePoptamano').fadeOut();
+}
+function bolaDown() {
+	$('ex01btnbola').bind( "touchstart", function(e){
+		
+		var audioElement = document.createElement('audio');
+		audioElement.setAttribute('autoplay', 'autoplay');
+		$.get();
+		audioElement.setAttribute('src', 'audio/btn.ogg');
+		audioElement.play();
+	});
+}
+function globoOver() {
+	$('#homePoplongitud').fadeIn(50);
+	bolaOut();
+	birdOut();
+	cometaOut();
+	conoOut();
+	aubtn();
+}
+function globoOut() {
+	$('#homePoplongitud').fadeOut();
+}
+
+function birdOver() {
+	$('#homePopPosicion').fadeIn(50);
+	bolaOut();
+	globoOut();
+	cometaOut();
+	conoOut();
+	aubtn();
+}
+function birdOut() {
+	$('#homePopPosicion').fadeOut();
+}
+
+function cometaOver() {
+	$('#homePopDistancia').fadeIn(50);
+	bolaOut();
+	globoOut();
+	birdOut();
+	conoOut();
+	aubtn();
+}
+function cometaOut() {
+	$('#homePopDistancia').fadeOut();
+}
+
+function conoOver() {
+	$('#homePopCantidad').fadeIn(50);
+	bolaOut();
+	globoOut();
+	birdOut();
+	cometaOut();
+	aubtn();
+}
+function conoOut() {
+	$('#homePopCantidad').fadeOut();
+}
+
+function nextPage(){
+	window.location.href = proxPantalla;
+}
+
+function flipPage(){
+	$('#contenido').transition({
+		perspective: '1000px',
+		rotateY: '180deg',
+		opacity: 0,
+	}, 500, 'out',function(){nextPage();});
+}
+
+function closeWelcome() {
+	$("#pantalla00").fadeOut(300);
+	$("#btnInfoPeq").fadeIn(300);
+}
+
+function goInfo() {
+	$("#pantalla00").fadeIn(300);
+	$("#btnInfoPeq").fadeOut(300);
+}
+
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  //alert(window.orientation); //Announce the new orientation number
+  if (window.orientation == 0){
+	  $("#turnScreen").fadeIn(0);
+  }
+  /*chrome no funciona en esta orientacion
+  if (window.orientation == 180){
+	  $("#turnScreen").fadeIn(0);
+  }*/
+  if (window.orientation == 90){
+	  $("#turnScreen").fadeOut(0);
+  }
+  if (window.orientation == -90){
+	  $("#turnScreen").fadeOut(0);
+  }
+}, false);
+
+
+$(document).ready(function() {
+	
+	
+	// precarga
+	//eliminamos el scroll de la pagina
+	$("body").css({"overflow-y":"hidden"});
+	//guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+	var alto=$(window).height();
+	//agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+	$("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='img/preload35.gif' /></div>");
+	//le damos el alto
+	$("#pre-load-web").css({height:alto+"px"});
+	//esta sera la capa que esta dento de la capa que muestra un gif
+	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
+	// fin precarga
+	
+	//previene rebote iOS
+	document.body.addEventListener('touchmove', function(event) {
+	  event.preventDefault();
+	}, false);
+	//fin previene rebote iOS
+	
+	if (window.orientation == 0){
+		$("#turnScreen").fadeIn(0);
+	}
+	
+	rotation();
+	globoUp();
+	birdUp();
+	cometaUp();
+	conoUp();
+	
+	var bolaOn = true;
+	
+	$('#ex01box4').css( {
+		display:'none',
+	});
+	$('#ex01box4').css( {
+		display:'none',
+	});
+	$('#ex01box3').css( {
+		display:'none',
+	});
+	$('#ex01box2').css( {
+		display:'none',
+	});
+	
+	/* modal dialogs */
+	//select all the a tag with name equal to modal
+	$('a[name=modal]').click(function(e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		//Get the A tag
+		var id = $(this).attr('href');
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(300);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(300); 
+	
+	});
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+
+	$(window).resize(function () {
+	 
+ 		var box = $('#boxes .window');
+ 
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+      
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+               
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        box.css('top',  winH/2 - box.height()/2);
+        box.css('left', winW/2 - box.width()/2);
+	 
+	});
+	/* fin modal dialogs */
+	
+}); // fin document ready
+</script>
+
+
+</head>
+<body>
+
+
+<div id="contenido">
+	
+	<div id="homebg">
+		
+		<a class="icoPeq icoInfoPeq" id="btnInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+		<a href="#dialog2" name="modal" id="logoHome"></a>
+		
+		<a class="homefig" href="javascript:void(0)" id="ex01btnbola"   onclick="bolaOver();"   onmouseup="bolaOut();"></a>
+		<a class="homefig" href="javascript:void(0)" id="ex01btnglobo"  onclick="globoOver();"  onmouseup="globoOut();"></a>
+		<a class="homefig" href="javascript:void(0)" id="ex01btnbird"   onclick="birdOver();"   onmouseup="birdOut();"></a>
+		<a class="homefig" href="javascript:void(0)" id="ex01btncometa" onclick="cometaOver();" onmouseup="cometaOut();"></a>
+		<a class="homefig" href="javascript:void(0)" id="ex01btnCono"   onclick="conoOver();"   onmouseup="conoOut();"></a>
+		
+		<div id="ex01bola"></div>
+		<div id="ex01globo"></div>
+		<div id="ex01bird"></div>
+		<div id="ex01cometa"></div>
+		<div id="ex01btnCono"></div>
+		<div id="ex01cono"></div>
+		<div id="manobola"></div>
+		<div id="manoCono"></div>
+		
+		<a href="javascript:var proxPantalla = '01.html'"  onClick="flipPage();" id="homePoptamano" class="homePop"><span>Nociones de</span>tamaño</a>
+		<a href="javascript:var proxPantalla = '02.html'"  onClick="flipPage();" id="homePoplongitud" class="homePop"><span>Nociones de</span>longitud y anchura</a>
+		<a href="javascript:var proxPantalla = '03.html'" onClick="flipPage();" id="homePopPosicion" class="homePop"><span>Nociones de</span>posición</a>
+		<a href="javascript:var proxPantalla = '04.html'"  onClick="flipPage();" id="homePopDistancia" class="homePop"><span>Nociones de</span>distancia</a>
+		<a href="javascript:var proxPantalla = '05.html'" onClick="flipPage();" id="homePopCantidad" class="homePop"><span>Nociones de</span>cantidad</a>
+		
+	
+	</div><!-- fin homebg -->
+    
+    <div id="pantalla00">
+        
+        <div id="welcome">
+            
+            <a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
+            <div id="tituloApp"><span style="font-size:60px;">Nociones</span> matemáticas</div>
+            <h3>Pulse los elementos en movimiento para ingresar a las pantallas.</h3>
+        
+        </div><!-- fin welcome -->
+        
+    </div><!--/pantalla00-->
+    
+	<div id="boxes"><!-- modal -->
+		<div id="dialog2" class="window">
+			
+			<img src="img/logo_lpt.png" width="384" height="83" alt="Libros para Todos | Grupo Nación" id="logoCreditos" />
+			<br /><br />
+			<div id="creditosH">
+				Libros para todos Grupo Nación &reg;
+				<br />
+				Contáctenos 800 366	2636 &bull; <a href="mailto:librosparatodoscr@nacion.com" style="color:#09C;">librosparatodoscr@nacion.com</a>
+				<br />
+				<a href="http://www.librosparatodoscr.com" target="_blank">www.librosparatodoscr.com</a>
+			</div><!-- fin creditosH -->
+			
+			<div id="creditosB">
+				<strong style="color:#09C;">Edici&oacute;n</strong> Grupo Naci&oacute;n GN S.A. 
+				&bull;
+				<strong style="color:#09C;">Gerente Corporativa de Estrategia</strong> Elvira Sabor&iacute;o Dobles
+				&bull;
+				<strong style="color:#09C;">Jefe de Libros para Todos</strong> Hanie Cordero Calder&oacute;n
+				&bull;
+				<strong style="color:#09C;">Supervisor Editorial</strong> Pamela Le&oacute;n C&eacute;spedes 
+				&bull;
+				<strong style="color:#09C;">Editora Ejecutiva</strong> D&eacute;bora Rojas Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Coordinador de dise&ntilde;o</strong> Laura V&aacute;zques Alvarado
+				&bull;
+				<strong style="color:#09C;">Dise&ntilde;o</strong> Carlos Blanco Alvarado
+				&bull;
+				<strong style="color:#09C;">Ilustraci&oacute;n</strong> Sandra Ardila Z&uacute;&ntilde;iga / Ang&eacute;lica Ruiz Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Programaci&oacute;n</strong> David Herrera Cordero
+			</div><!-- fin creditosB -->
+			
+			<div id="creditosB" style="border-bottom:none;">
+				Quedan reservados los derechos sobre la presente edición.
+				Se prohíbe su reproducción sin el permiso previo y por escrito de <strong>Grupo Nación GN S.A.</strong>
+				<br /><br />
+				Las fotografías utilizadas en este material tienen fines educativos / Fotografías: www.shutterstock.com &bull; www.thinkstock.com <!--&bull; Archivo Grupo Nación GN S.A.-->
+			</div><!-- fin creditosB -->
+			
+			<a  href="javascript:void(0)" class="close" id="btCloseCredits"></a>
+		</div>
+		<!-- Mask to cover the whole screen -->
+		<div id="mask"></div>
+	</div><!-- fin boxes modal -->
+
+</div><!-- fin contenido -->
+
+<div id="turnScreen"></div>
+
+<script language="Javascript">
+	document.oncontextmenu = function(){return false};
+	document.onselectstart = function(){return false};
+	//document.onkeydown = function(){return false};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Nociones de longitud y anchura</title>
+
+
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/e03.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/googleapis/jquery.min.js"></script>
+<script type="text/javascript" src='js/jquery.transit.min.js'></script>
+<script type="text/javascript" src="js/kinetic-v4.4.3.min.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+
+var proxPantalla = 1; //valor inicial, incrementa con respuesta Ok
+
+var audioElement = document.createElement('audio');
+audioElement.setAttribute('autoplay', 'autoplay');
+$.get();
+
+function aubtn() {
+	audioElement.setAttribute('src', 'audio/plop.ogg');
+	audioElement.play();
+}
+
+$(window).load(function(){
+	$("#pre-load-web").fadeOut(1000,function(){
+		//eliminamos la capa de precarga
+	    $(this).remove();
+	    //permitimos scroll
+	    $("body").css({"overflow-y":"auto"});
+	});        
+});
+
+function nextPage(){
+	window.location.href = proxEjercicio;
+}
+
+function flipPage(){
+	$('#contenido').transition({
+		perspective: '1000px',
+		rotateY: '180deg',
+		opacity: 0,
+	}, 500, 'out',function(){nextPage();});
+}
+
+function txBox() {
+	var timerTxG = setTimeout(function() {
+		$(txblock).fadeIn(300);
+		clearTimeout(timerTxG);
+	}, 500);
+}
+
+function closeWelcome() {
+	$("#pantalla00").animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	//alert('pantallaActual: ' + proxPantalla);
+	switch(proxPantalla) {
+		
+		case 1:
+			pant01();
+		break;
+		
+		case 2:
+			pant02();
+		break;
+		
+		case 3:
+			pant03();
+		break;
+		
+		case 4:
+			pant04();
+		break;
+		
+	} //fin switch
+	$(pantallaActual).css({ display:'block' });
+	$(pantallaActual).animate({ 'margin-top':0 }, 150 );
+}
+
+var pantallaActual = '';
+
+function goInfo() {
+	//alert('Pantalla Actual: ' + proxPantalla);
+	switch(proxPantalla) { //devuelve valor Pantalla Actual
+		
+		case 1:
+			pantallaActual = '#pantalla01';
+		break;
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+	} //fin switch
+	$(pantallaActual).animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	$("#pantalla00").css({ display:'block' });
+	$("#pantalla00").animate({ 'margin-top':10 }, 300);
+}
+
+function closeOk() {
+	$("#respuestaOk").fadeOut(100);
+	switch(proxPantalla) {
+		
+		case 1:
+			pantallaChao   = '#pantalla01';
+			pantallaViene  = '#pantalla02';
+			pant02();
+		break;
+		
+		case 2:
+			pantallaChao   = '#pantalla02';
+			pantallaViene  = '#pantalla03';
+			pant03();
+		break;
+		
+		case 3:
+			pantallaChao   = '#pantalla03';
+			pantallaViene  = '#pantalla04';
+			pant04();
+		break;
+		
+		case 4:
+			/*pantallaChao   = '#pantalla04';
+			pantallaViene  = '#pantalla04';*/
+			pantFinal();
+		break;
+		
+	} //fin switch
+	proxPantalla++; //alert ('proxPantalla: ' + proxPantalla);
+	
+	var timerPantallaChao = setTimeout(function() {
+		$(pantallaChao).animate({ 'margin-top':650 }, 200, function(){ $(this).css({ display:'none' }); });
+	}, 300);
+	var timerPantallaViene = setTimeout(function() {
+		$('#container').remove();
+		$("#pantalla02").add("<div id='container'></div>");
+		$(pantallaViene).css({ display:'block' });
+		$(pantallaViene).animate({ 'margin-top':0 }, 200 );
+		clearTimeout(timerPantallaChao);
+	}, 500);
+}
+
+function pant01() {
+	pantallaActual = '#pantalla01';
+	
+	txblock = '#txG1';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container1',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 524; 		yCord1 = 100;
+	xCord2 = 622; 		yCord2 = 320;
+	xCord3 = 740; 		yCord3 = 40;
+	xCord4 = 847; 		yCord4 = 270;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = -200; 	ybCord2 = 0;//g_B
+	xbCord3 = 333; 		ybCord3 = 110;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
+	
+	var sources = {
+		beach: 		'bg.png',
+		
+		g_A: 		'g1_verde.png',
+		g_A_glow: 	'g1_verde_glow.png',
+		g_A_black: 	'g1_verde_black.png',
+		
+		g_B: 		'g1_azul.png',
+		g_B_glow: 	'g1_azul_glow.png',
+		g_B_black: 	'g1_azul_black.png',
+		
+		g_C: 		'g1_morado.png',
+		g_C_glow: 	'g1_morado_glow.png',
+		g_C_black: 	'g1_morado_black.png',
+		
+		g_D: 		'g1_rojo.png',
+		g_D_glow: 	'g1_rojo_glow.png',
+		g_D_black: 	'g1_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant01
+
+function pant02(){
+	pantallaActual = '#pantalla02';
+	
+	txblock = '#txG2';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container2',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 720; 		yCord1 = 50;
+	xCord2 = 540; 		yCord2 = 280;
+	xCord3 = 800; 		yCord3 = 300;
+	xCord4 = 520; 		yCord4 = 10;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = 270; 	ybCord2 = 100;//g_B
+	xbCord3 = -200; 	ybCord3 = 110;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
+	
+	var sources = {
+		beach: 		'bg2.png',
+		
+		g_A: 		'g2_amarillo.png',
+		g_A_glow: 	'g2_amarillo_glow.png',
+		g_A_black: 	'g2_amarillo_black.png',
+		
+		g_B: 		'g2_azul.png',
+		g_B_glow: 	'g2_azul_glow.png',
+		g_B_black: 	'g2_azul_black.png',
+		
+		g_C: 		'g2_morado.png',
+		g_C_glow: 	'g2_morado_glow.png',
+		g_C_black: 	'g2_morado_black.png',
+		
+		g_D: 		'g2_rojo.png',
+		g_D_glow: 	'g2_rojo_glow.png',
+		g_D_black: 	'g2_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant02
+
+function pant03() {
+	pantallaActual = '#pantalla03';
+	
+	txblock = '#txG3';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container3',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 524; 		yCord1 = 100;
+	xCord2 = 622; 		yCord2 = 320;
+	xCord3 = 740; 		yCord3 = 40;
+	xCord4 = 847; 		yCord4 = 270;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = 347;	 	ybCord2 = 150;//g_B
+	xbCord3 = -200; 	ybCord3 = 0;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
+	
+	var sources = {
+		beach: 		'bg3.png',
+		
+		g_A: 		'g1_verde.png',
+		g_A_glow: 	'g1_verde_glow.png',
+		g_A_black: 	'g1_verde_black.png',
+		
+		g_B: 		'g1_azul.png',
+		g_B_glow: 	'g1_azul_glow.png',
+		g_B_black: 	'g1_azul_black.png',
+		
+		g_C: 		'g1_amarillo.png',
+		g_C_glow: 	'g1_amarillo_glow.png',
+		g_C_black: 	'g1_amarillo_black.png',
+		
+		g_D: 		'g1_rojo.png',
+		g_D_glow: 	'g1_rojo_glow.png',
+		g_D_black: 	'g1_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant03
+
+function pant04() {
+	pantallaActual = '#pantalla04';
+	
+	txblock = '#txG4';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container4',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 524; 		yCord1 = 70;
+	xCord2 = 622; 		yCord2 = 280;
+	xCord3 = 710; 		yCord3 = 40;
+	xCord4 = 800; 		yCord4 = 250;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = -200; 	ybCord2 = 0;//g_B
+	xbCord3 = -200;		ybCord3 = 0;//g_C
+	xbCord4 = 304;	 	ybCord4 = 124;//g_D
+	
+	var sources = {
+		beach: 		'bg4.png',
+		
+		g_A: 		'g4_verde.png',
+		g_A_glow: 	'g4_verde_glow.png',
+		g_A_black: 	'g4_verde_black.png',
+		
+		g_B: 		'g4_azul.png',
+		g_B_glow: 	'g4_azul_glow.png',
+		g_B_black: 	'g4_azul_black.png',
+		
+		g_C: 		'g4_morado.png',
+		g_C_glow: 	'g4_morado_glow.png',
+		g_C_black: 	'g4_morado_black.png',
+		
+		g_D: 		'g4_rojo.png',
+		g_D_glow: 	'g4_rojo_glow.png',
+		g_D_black: 	'g4_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant04
+
+function pantFinal() {
+	var timerPantFinal = setTimeout(function() {
+		proxEjercicio = '04.html';
+		flipPage();
+		clearTimeout(timerPantFinal);
+	}, 1000);
+}
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  //alert(window.orientation); //Announce the new orientation number
+  if (window.orientation == 0){
+	  $("#turnScreen").fadeIn(0);
+  }
+  /*chrome no funciona en esta orientacion
+  if (window.orientation == 180){
+	  $("#turnScreen").fadeIn(0);
+  }*/
+  if (window.orientation == 90){
+	  $("#turnScreen").fadeOut(0);
+  }
+  if (window.orientation == -90){
+	  $("#turnScreen").fadeOut(0);
+  }
+}, false);
+
+$(document).ready(function() {
+	
+	<!-- Carga imagenes :hover al inicio -->
+	/*if (document.images){
+		//
+		/*
+		foto1 = new Image();
+		foto1.src = "assets/ejer_07_top_dino2.png";* /
+	}*/
+	<!-- fin Carga imagenes -->
+	
+	// precarga
+	//eliminamos el scroll de la pagina
+	$("body").css({"overflow-y":"hidden"});
+	//guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+	var alto=$(window).height();
+	//agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+	$("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='img/preload35.gif' /></div>");
+	//le damos el alto
+	$("#pre-load-web").css({height:alto+"px"});
+	//esta sera la capa que esta dento de la capa que muestra un gif
+	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
+	// fin precarga
+	
+	if (window.orientation == 0){
+		$("#turnScreen").fadeIn(0);
+	}
+	
+	/* modal dialogs */
+	//select all the a tag with name equal to modal
+	$('a[name=modal]').click(function(e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		//Get the A tag
+		var id = $(this).attr('href');
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(300);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(300); 
+	
+	});
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+
+	$(window).resize(function () {
+	 
+ 		var box = $('#boxes .window');
+ 
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+      
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+               
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        box.css('top',  winH/2 - box.height()/2);
+        box.css('left', winW/2 - box.width()/2);
+	 
+	});
+	/* fin modal dialogs */
+	
+}); <!--/fin document ready-->
+
+</script>
+
+<!-- arrastre -->
+<script defer="defer">
+function loadImages(sources, callback) {
+	var assetDir = 'img/e03/';
+	var images = {};
+    var loadedImages = 0;
+	var numImages = 0;
+	for(var src in sources) {
+		numImages++;
+	}
+    for(var src in sources) {
+    	images[src] = new Image();
+        images[src].onload = function() {
+        	if(++loadedImages >= numImages) {
+            	callback(images);
+			}
+		};
+        images[src].src = assetDir + sources[src];
+	}
+}//fin loadImages
+function isNearOutline(animal, outline) {
+	var a = animal;
+    var o = outline;
+    //nuevo
+    var ax = a.getX();
+    var ay = a.getY();
+    
+	if(ax > o.x - 80 && ax < o.x + 80 && ay > o.y - 80 && ay < o.y + 80) {
+    	return true;
+	}
+    //fin nuevo
+    else {
+    	return false;
+	}
+}//fin isNearOutline
+
+function drawBackground(background, beachImg) {
+	var canvas = background.getCanvas();
+    var context = background.getContext();
+    
+	context.drawImage(beachImg, 0, 0);
+}//fin drawBackground
+
+function initStage(images) {
+	var stage = stageB;
+	
+	var background = new Kinetic.Layer();
+	var animalLayer = new Kinetic.Layer();
+	var animalShapes = [];
+	var score = 0;
+	
+	// image positions
+	var animals = {
+		g_A: 	{ x: xCord1, y: yCord1 },
+		g_B: 	{ x: xCord2, y: yCord2 },
+		g_C: 	{ x: xCord3, y: yCord3 },
+		g_D: 	{ x: xCord4, y: yCord4 }
+	};//fin animals
+	
+	var outlines = {
+		g_A_black: 	{ x: xbCord1, y: ybCord1 },
+		g_B_black: 	{ x: xbCord2, y: ybCord2 },
+		g_C_black: { x: xbCord3, y: ybCord3 },
+		g_D_black: 	{ x: xbCord4, y: ybCord4 } 
+	};//fin outlines
+	
+	// create draggable animals
+	for(var key in animals) {
+		// anonymous function to induce scope
+		(function() {
+			var privKey = key;
+			var anim = animals[key];
+			
+			var animal = new Kinetic.Image({
+				image: images[key],
+				x: anim.x,
+				y: anim.y,
+				draggable: true
+			});
+			
+			//nuevo
+			animal.createImageHitRegion();
+			//fin nuevo
+			
+			animal.on('dragstart', function() {
+				animal.moveToTop();
+				animalLayer.draw();
+				animal.lastXposition = animal.attrs.x;
+				animal.lastYposition = animal.attrs.y;
+			});
+		
+			/*
+			* check if animal is in the right spot and
+			* snap into place if it is
+			*/
+			animal.on('dragend', function() {
+				var outline = outlines[privKey + '_black'];
+				if(!animal.inRightPlace && isNearOutline(animal, outline)) {
+					animal.attrs.x = outline.x;
+					animal.attrs.y = outline.y;
+					//nuevo
+					animal.setPosition(outline.x, outline.y);
+					//fin nuevo
+					animalLayer.draw();
+					//nuevo
+					animal.inRightPlace = true;
+					//fin nuevo
+					
+					if(++score >= 1) {
+						var tscore = setTimeout(function() {
+							$("#respuestaOk").fadeIn(100);
+							//$('#container').remove();
+							//$('#container').hide();
+							//$('#pantalla02').append('<div id="container"></div>');
+							//$('#container').fadeIn(300);
+							clearTimeout(tscore);
+						}, 300);
+					}//end if score
+		
+					// disable drag and drop
+					setTimeout(function() {
+						animal.setDraggable(false);
+					}, 50);
+					//fin disable drag and drop
+					
+					audioElement.setAttribute('src', 'audio/btn.ogg');
+					audioElement.play();
+					
+				} else {
+					animal.transitionTo({
+						x: animal.lastXposition,
+						y: animal.lastYposition,
+						duration: 0.5,
+						easing: 'ease-in-out'
+					});
+									
+				}//fin if
+		});//fin animal dragend
+		
+		// make animal glow on mouseover
+		animal.on('mouseover', function() {
+			animal.setImage(images[privKey + '_glow']);
+			animalLayer.draw();
+			document.body.style.cursor = 'pointer';
+		});
+	
+		// return animal on mouseout
+		animal.on('mouseout', function() {
+			animal.setImage(images[privKey]);
+			animalLayer.draw();
+			document.body.style.cursor = 'default';
+		});
+		
+		animal.on('dragmove', function() {
+			document.body.style.cursor = 'pointer';
+		});
+		
+		animalLayer.add(animal);
+		animalShapes.push(animal);
+	})();//for key in animals
+	
+	}//fin initstage ?
+	
+	// create animal outlines
+	for(var key in outlines) {
+		// anonymous function to induce scope
+		(function() {
+			var imageObj = images[key];
+			var out = outlines[key];
+			
+			var outline = new Kinetic.Image({
+				image: imageObj,
+				x: out.x,
+				y: out.y
+			});
+			
+			animalLayer.add(outline);
+		})();
+	}//fin for key in outlines
+	
+	stage.add(background);
+	stage.add(animalLayer);
+	
+	drawBackground(background, images.beach);
+}//fin initstage
+</script>
+<!-- fin arrastre -->
+
+
+</head>
+<body>
+
+
+<div id="contenido">
+	
+    <div id="general">
+		
+		<div id="respuestaOk" class="pantallas">
+            <div class="retro">
+                <div id="icoOk" class="icoGrande"></div>
+                <a id="icoClose" class="icoGrande" onclick="closeOk();" href="javascript:void(0)"></a>
+                Seleccionó de forma correcta los objetos según el tamaño.
+            </div><!--/retro-->
+            <a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:70px;"></a>
+        </div><!--/respuestaOk-->
+		
+		<div id="pantalla04" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+		
+			<div id="txG4" class="txBoxes">El globo amarillo es igual de ancho que</div>
+            
+            <div id="container4"></div>
+            
+         </div><!--/fin pantalla04-->
+         
+        <div id="pantalla03" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+		
+			<div id="txG3" class="txBoxes">El globo morado es más largo que</div>
+            
+            <div id="container3"></div>
+            
+         </div><!--/fin pantalla03-->
+         
+         <div id="pantalla02" class="pantallas">
+         	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+			
+			<div id="txG2" class="txBoxes">El globo verde es menos ancho que</div>
+            
+            <div id="container2"></div>
+			
+		</div><!--/fin pantalla02-->
+         
+		<div id="pantalla01" class="pantallas">
+            
+			<a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <div id="txG1" class="txBoxes">El globo amarillo es tan corto como</div>
+            
+            <div id="container1"></div>
+			
+		</div><!--/fin pantalla01-->
+                
+        <div id="pantalla00" class="pantallas">
+            
+            <div id="welcome">
+                
+                <div id="icoInfo" class="icoGrande"></div>
+                <a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
+                
+                <div id="tituloApp">Nociones de<br />longitud y anchura</div>
+                <div id="instru">Agrupe los globos según se le solicita</div>
+				
+			</div><!--/fin welcome-->
+            
+			<a href="#dialog2" name="modal" id="logoAbajoLPT"></a>
+			
+		</div><!--/fin pantalla00-->
+        
+	</div><!--/fin general-->
+	
+    <!--
+	<div id="boxNext">
+		
+		<h2>¡Felicidades!</h2>
+		<br />
+		Seleccionó correctamente los elementos.
+        <br />
+        Pulse el botón para continuar.
+        <br /><br />
+        <a href="javascript:var proxEjercicio = '02.html'" onClick="flipPage();" class="nextbtn">Siguiente</a>
+		
+	</div><!-- fin boxNext -->
+	
+	<div id="boxes"><!-- modal -->
+		<div id="dialog2" class="window">
+			
+			<img src="img/logo_lpt.png" width="384" height="83" alt="Libros para Todos | Grupo Nación" id="logoCreditos" />
+			<br /><br />
+			<div id="creditosH">
+				Libros para todos Grupo Nación &reg;
+				<br />
+				Contáctenos 800 366	2636 &bull; <a href="mailto:librosparatodoscr@nacion.com" style="color:#09C;">librosparatodoscr@nacion.com</a>
+				<br />
+				<a href="http://www.librosparatodoscr.com" target="_blank">www.librosparatodoscr.com</a>
+			</div><!-- fin creditosH -->
+			
+			<div id="creditosB">
+				<strong style="color:#09C;">Edici&oacute;n</strong> Grupo Naci&oacute;n GN S.A. 
+				&bull;
+				<strong style="color:#09C;">Gerente Corporativa de Estrategia</strong> Elvira Sabor&iacute;o Dobles
+				&bull;
+				<strong style="color:#09C;">Jefe de Libros para Todos</strong> Hanie Cordero Calder&oacute;n
+				&bull;
+				<strong style="color:#09C;">Supervisor Editorial</strong> Pamela Le&oacute;n C&eacute;spedes 
+				&bull;
+				<strong style="color:#09C;">Editora Ejecutiva</strong> D&eacute;bora Rojas Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Coordinador de dise&ntilde;o</strong> Laura V&aacute;zques Alvarado
+				&bull;
+				<strong style="color:#09C;">Dise&ntilde;o</strong> Carlos Blanco Alvarado
+				&bull;
+				<strong style="color:#09C;">Ilustraci&oacute;n</strong> Sandra Ardila Z&uacute;&ntilde;iga / Ang&eacute;lica Ruiz Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Programaci&oacute;n</strong> David Herrera Cordero
+			</div><!-- fin creditosB -->
+			
+			<div id="creditosB" style="border-bottom:none;">
+				Quedan reservados los derechos sobre la presente edición.
+				Se prohíbe su reproducción sin el permiso previo y por escrito de <strong>Grupo Nación GN S.A.</strong>
+				<br /><br />
+				Las fotografías utilizadas en este material tienen fines educativos / Fotografías: www.shutterstock.com &bull; www.thinkstock.com <!--&bull; Archivo Grupo Nación GN S.A.-->
+			</div><!-- fin creditosB -->
+			
+			<a  href="javascript:void(0)" class="close" id="btCloseCredits"></a>
+		</div>
+		<!-- Mask to cover the whole screen -->
+		<div id="mask"></div>
+	</div><!-- fin boxes modal -->
+
+</div><!-- fin contenido -->
+
+<div id="turnScreen"></div>
+
+<script language="Javascript">
+	document.oncontextmenu = function(){return false};
+	document.onselectstart = function(){return false};
+	//document.onkeydown = function(){return false};
+</script>
+
+
+</body>
+</html>

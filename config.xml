@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.librosparatodoscr.nocionesMatematicasAndroid"
+    version   = "1.0.0">
+<name>Nociones Matemáticas</name>
+<icon src="phoneGap/Icon@2x.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="phoneGap/LDPI_landscape.png"  gap:platform="android" gap:density="ldpi" />
+<gap:splash src="phoneGap/MDPI_landscape.png"  gap:platform="android" gap:density="mdpi" />
+<gap:splash src="phoneGap/HDPI_landscape.png"  gap:platform="android" gap:density="hdpi" />
+<gap:splash src="phoneGap/XHDPI_landscape.png" gap:platform="android" gap:density="xhdpi" />
+<description>
+Juguemos con las Nociones Matemáticas es una aplicación para aprender conceptos de tamaño, posición, longitud, anchura, distancia, cantidad y relaciones unívocas. Todo a través de amigables juegos y divertidos escenarios. Una iniciativa de Libros para Todos de Grupo Nación.
+</description>
+<preference name="permissions" value="none" />
+<preference name="orientation" value="landscape" />
+<preference name="fullscreen" value="true" />
+<preference name="exit-on-suspend" value="true" />
+<preference name="show-splash-screen-spinner" value="false" />
+<author href="http://apoyo.librosparatodoscr.com" email="david.herrera@nacion.com">
+David Herrera Cordero | Libros para Todos | Grupo Nación
+</author>
+</widget>

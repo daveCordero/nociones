@@ -1,0 +1,440 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* miscelaneos
+
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     inset  0px 0px 50px rgba(113,0,48,1);
+	-webkit-box-shadow:  inset  0px 0px 50px rgba(113,0,48,1);
+	box-shadow:          inset  0px 0px 50px rgba(113,0,48,1);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1)";
+	
+	-moz-box-shadow:     0px 0px 50px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 50px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 50px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1)";
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+	
+	-webkit-transition: background-position .5s ease;
+	   -moz-transition: background-position .5s ease;
+	     -o-transition: background-position .5s ease;
+	        transition: background-position .5s ease;
+			
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity:0.9;
+	opacity:0.9;
+	
+*/
+
+
+
+/* precarga */
+#pre-load-web {width:100%;position:absolute;background:#FFF;left:0px;top:0px;z-index:100000} /*#DBDED9*/
+/*aqui centramos la imagen si coloco margin left -30 es por que la imagen mide 60 */
+#pre-load-web #imagen-load{left:50%;margin-left:-30px;position:absolute}
+/* fin precarga */
+
+
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Muli'), url(../fonts/muli/minRpKQdEvXRRS8oAbAtWvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+body {
+	margin:0px;
+	padding:0px;
+	
+	font-size:14px;
+	font-family: 'Muli', sans-serif;
+	font-weight: 400;
+	font-family:14px;
+	
+	color:#333;
+	
+	height:100% !important;
+}
+
+::selection {
+	background: #FFF; /* Safari */
+	color:#999;
+}
+::-moz-selection {
+	background: #FFF; /* Firefox */
+	color:#999;
+}
+
+#contenido {
+	/*background-color:#333 !important;*/
+	background-repeat:no-repeat;
+	background-position:center;
+	
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	
+	width:100%;
+	
+	height:auto;
+	min-height:100%;
+}
+
+#general { /* contiene objetos evita scroll */
+	/*background:#FFF;*/
+	
+	display:block;
+	overflow:hidden;
+	
+	position:absolute;
+	left:0;
+	top:50%;
+	
+	width:100%;
+	height:600px;
+	/*height:100%;*/
+	margin:-300px 0px 0px 0px;
+	
+	padding:0px;
+}
+
+.pantallas {
+	background-image:url(../img/logo_lpt_peq.png);
+	background-repeat:no-repeat;
+	background-position:bottom right;
+	
+	display:none;
+	float:none;
+	clear:both;
+	position:relative;
+}
+
+#welcome {
+	background:#F4EADD;
+	display:block;
+	
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	width:670px;
+	padding:30px;
+	margin:-200px 0px 0px -350px;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+}
+
+#tituloApp {
+	/*background:#CCC;*/
+	border-bottom:#DBC1A2 solid 2px;
+	display:block;
+	float:none;
+	clear:both;
+	padding:0px 0px 5px 0px;
+	margin:0px 0px 20px 0px;
+	font-size:60px;
+	text-align:center;
+	color:#703403;
+}
+
+#instru {
+	font-size:42px;
+	line-height:48px;
+	text-align:center;
+	color:#996633;
+}
+
+.retro {
+	background:#F4EADD;
+	/*display:none;*/
+	position:absolute;
+	z-index:1001;
+	
+	width:630px;
+	padding:20px;
+	
+	top:50%;
+	left:50%;
+	margin:-100px 0px 0px -315px;
+	
+	text-align:center;
+	font-size:40px;
+	color:#85500F;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+}
+
+#respuestaOk {
+	background:none;
+	margin-top:10px;
+}
+#respuestaNoOk {
+	background:none;
+	margin-top:10px;
+}
+
+#logoAbajoLPT {
+	background:url(../img/logo_lpt.png) no-repeat center #FFF;
+	
+	/*background-image:url(../img/logo_lpt.png);
+	background-repeat:repeat-x;
+	background-position:0px 0px;*/
+	
+	display:block;
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	/*float:none;
+	clear:both;
+	margin:30px auto 0px auto;*/
+	
+	width:384px;
+	height:83px;
+	padding:0px;
+	
+	margin:150px 0px 0px -192px; /* Resta mitad alto de #logoAbajoLPT y Suma alto de #welcome */
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+}
+#logoAbajoLPT:hover {
+	/*background-position:-384px 0px;*/
+	padding:0px 5px 0px 5px;
+	margin-left:-197px;
+	
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity:0.9;
+	opacity:0.9;
+}
+
+a {
+	text-decoration:none;
+}
+
+.finCols {
+	float:none;
+	clear:both;
+}
+
+/* modal dialogs */
+#mask {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:9000;
+	background-color:#000;
+	display:none;
+}
+  
+#boxes .window {
+	position:fixed;
+	left:0;
+	top:0;
+	width:440px;
+	height:200px;
+	display:none;
+	z-index:999999;
+	padding:20px;
+}
+#boxes #dialog2 {
+	/*background:url(../notice.png) no-repeat 0 0 transparent;*/
+	background:#FFF;
+	
+	width:480px;
+	height:355px;
+	
+	margin:-50px 0px 0px 0px;
+	padding:10px 20px 20px 20px;
+	
+	text-align:justify;
+	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+}
+/* fin modal dialogs */
+
+#creditosH {
+	border-bottom:#E4E4E4 solid 1px;
+	display:block;
+	float:none;
+	clear:both;
+	margin:0px 0px 10px 0px;
+	padding:0px 0px 5px 0px;
+	font-size:14px;
+}
+#creditosB {
+	border-bottom:#E4E4E4 solid 1px;
+	display:block;
+	float:none;
+	clear:both;
+	padding:0px 0px 5px 0px;
+	margin:0px 0px 10px 0px;
+	font-size:12px;
+}
+
+#btCloseCredits {
+	/*background:#6F0;*/
+	background-color:transparent;
+	background:url(../img/bt_closeCerdits.png) no-repeat;
+	background-position:0px 0px;
+	display:block;
+	position:absolute;
+	top:-10px;
+	right:-10px;
+	width:24px;
+	height:24px;
+}
+#btCloseCredits:hover {
+	/*background:#6F0;*/
+	background:url(../img/bt_closeCerdits.png) no-repeat;
+	background-position:-24px 0px;
+}
+
+#logoCreditos {
+	/*background:#6C0;*/
+	display:block;
+	float:none;
+	clear:both;
+	margin:0px auto 0px auto;
+}
+
+h3 {
+	margin:0px 0px 10px 0px;
+	font-size:24px;
+	line-height:18px;
+	color:#643F78;
+	font-weight:normal;
+}
+
+.icoInfoPeq {
+	background-image:url(../img/ico_i_peq.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:left;
+}
+.icoHomePeq {
+	background-image:url(../img/ico_main_peq.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:right;
+}
+
+.icoPeq {
+	background-color:#703403;
+	display:block;
+	
+	width:41px;
+	height:41px;
+	margin:7px 0px 0px 0px;
+	
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-khtml-border-radius:50%;
+	border-radius:50%;
+	
+	z-index:1602;
+}
+.icoPeq:hover {
+	background-color:#85500F;
+}
+
+#icoOk {
+	background-image:url(../img/ico_ok_gde.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:left;
+	margin-left:-77px;
+}
+#icoOk:hover {
+	background-color:#703403;
+}
+
+#icoNoOk {
+	background-image:url(../img/ico_x_gde.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:left;
+	margin-left:-77px;
+}
+#icoNoOk:hover {
+	background-color:#703403;
+}
+
+.icoGrande {
+	background-color:#703403;
+	display:block;
+	
+	width:94px;
+	height:94px;
+	margin:-77px 0px 0px 0px;
+	
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-khtml-border-radius:50%;
+	border-radius:50%;
+}
+.icoGrande:hover {
+	background-color:#85500F;
+}
+
+#icoInfo {
+	background-image:url(../img/ico_i_gde.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:left;
+	margin-left:-77px;
+}
+#icoInfo:hover {
+	background-color:#703403;
+}
+
+#icoClose {
+	background-image:url(../img/ico_close_gde.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	float:right;
+	margin-right:-77px;
+}
+
+#turnScreen {
+	background:url(../img/turn_screen.png) no-repeat center #000;
+	/*display:block;*/
+	display:none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+

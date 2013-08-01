@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Nociones de posición</title>
+
+
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/e02.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/googleapis/jquery.min.js"></script>
+<script type="text/javascript" src='js/jquery.transit.min.js'></script>
+
+
+<script language="javascript" type="text/javascript">
+
+var proxPantalla = 1; //valor inicial, incrementa con respuesta Ok
+var score = 0;
+var meta = '';
+
+function aubtn(){
+	audioElement.setAttribute('src', 'audio/plop.ogg');
+	audioElement.play();
+}
+
+function aubtnNo(){
+	audioElement.setAttribute('src', 'audio/plop.ogg');
+	audioElement.play();
+}
+
+var audioElement = document.createElement('audio');
+audioElement.setAttribute('autoplay', 'autoplay');
+$.get();
+
+$(window).load(function(){
+	$("#pre-load-web").fadeOut(1000,function(){
+		//eliminamos la capa de precarga
+	    $(this).remove();
+	    //permitimos scroll
+	    $("body").css({"overflow-y":"auto"});
+	});        
+});
+
+function nextPage(){
+	window.location.href = proxEjercicio;
+}
+
+function flipPage(){
+	$('#contenido').transition({
+		perspective: '1000px',
+		rotateY: '180deg',
+		opacity: 0,
+	}, 500, 'out',function(){nextPage();});
+}
+
+function closeWelcome() {
+	//alert('pantallaActual: ' + proxPantalla);
+	$("#pantalla00").animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	switch(proxPantalla) {
+		
+		case 1:
+			pantallaActual = '#pantalla01';
+			pant01();
+		break;
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+		case 5:
+			pantallaActual = '#pantalla05';
+		break;
+		
+		case 6:
+			pantallaActual = '#pantalla06';
+		break;
+		
+		case 7:
+			pantallaActual = '#pantalla07';
+		break;
+		
+	} //fin switch
+	$(pantallaActual).css({ display:'block' });
+	$(pantallaActual).animate({ 'margin-top':0 }, 150 );
+	$(pantallaActual).fadeIn(500);
+	$("#contenido").css({'background-image': 'url(img/e02/zoo.png)'});
+}//fin closeWelcome
+
+var pantallaActual = '';
+
+function goInfo() {
+	//alert('Pantalla Actual: ' + proxPantalla);
+	switch(proxPantalla) { //devuelve valor Pantalla Actual
+		
+		case 1:
+			pantallaActual = '#pantalla01';
+		break;
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+		case 5:
+			pantallaActual = '#pantalla05';
+		break;
+		
+		case 6:
+			pantallaActual = '#pantalla06';
+		break;
+		
+		case 7:
+			pantallaActual = '#pantalla07';
+		break;
+		
+	} //fin switch
+	$(pantallaActual).animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
+	$("#pantalla00").css({ display:'block' });
+	$("#pantalla00").animate({ 'margin-top':0 }, 300);
+	$("#contenido").css({'background-image': 'url(img/e02/bg_alpha.png)'});
+}
+
+function tapOk(clicked_id) {
+	var removerId = "#" + clicked_id; //alert('Remover Id: ' + removerId);
+	$(removerId).attr("onclick", "javascript:void(0);");
+	score++; //alert('Score: ' + score);
+	if(score == meta){
+		var timerOk = setTimeout(function() {
+			$("#respuestaOk").fadeIn(300);
+			$("#contenido").css({'background-image': 'url(img/e02/bg_alpha.png)'});
+			clearTimeout(timerOk);
+		}, 1000);
+	}
+	aubtn();
+	var newIdOk = "#" + clicked_id + ' .marcaOk';
+	$(newIdOk).fadeIn(100);
+}//fin tapOk
+function tapNoOk(clicked_id) {
+	//alert('Clicked Id: ' + clicked_id);
+	aubtnNo();
+	
+	var newIdNoOk = "#" + clicked_id + ' .marcaNoOk';
+	$(newIdNoOk).fadeIn(100);
+	
+	/*var newIdNoOk = "#" + clicked_id; //alert('NewIdNoOk: ' + newIdNoOk);
+	$('newIdNoOk').append('<div class="marca marcaNoOk"></div>');*/
+	
+	var timerNoOk = setTimeout(function() {
+		$(newIdNoOk).fadeOut(100);
+		clearTimeout(timerNoOk);
+	}, 800);
+}//fin tapNoOk
+
+function closeOk() {
+	$("#respuestaOk").fadeOut(100);
+	switch(proxPantalla) {
+		
+		case 1:
+			pantallaChao   = '#pantalla01';
+			pantallaViene  = '#pantalla02';
+			pant02();
+		break;
+		
+		case 2:
+			pantallaChao   = '#pantalla02';
+			pantallaViene  = '#pantalla03';
+			pant03();
+		break;
+		
+		case 3:
+			pantallaChao   = '#pantalla03';
+			pantallaViene  = '#pantalla04';
+			pant04();
+		break;
+		
+		case 4:
+			pantallaChao   = '#pantalla04';
+			pantallaViene  = '#pantalla05';
+			pant05();
+		break;
+		
+		case 5:
+			pantallaChao   = '#pantalla05';
+			pantallaViene  = '#pantalla06';
+			pant06();
+		break;
+		
+		case 6:
+			pantallaChao   = '#pantalla06';
+			pantallaViene  = '#pantalla07';
+			pant07();
+		break;
+		
+		case 7:
+			pantallaChao   = '#pantalla07';
+			pantallaViene  = '#pantalla01';
+			pantFinal();
+		break;
+		
+	} //fin switch
+	proxPantalla++; //alert ('proxPantalla: ' + proxPantalla);
+	var timerPantallaChao = setTimeout(function() {
+		//$(pantallaChao).animate({ 'margin-top':650 }, 200, function(){ $(this).css({ display:'none' }); });
+		$(pantallaChao).animate({ 'margin-top':650 }, 200, function(){ $(this).remove(); });
+		clearTimeout(timerPantallaChao);
+	}, 300);
+	var timerPantallaViene = setTimeout(function() {
+		$(pantallaViene).css({ display:'block' });
+		$(pantallaViene).animate({ 'margin-top':0 }, 200 );
+		clearTimeout(timerPantallaViene);
+	}, 500);
+	$("#contenido").css({'background-image': 'url(img/e02/zoo.png)'});
+}
+
+function animalesEntrada(){
+	var timerTexto = setTimeout(function() {
+		$(instruccion).fadeIn(500);
+		clearTimeout(timerTexto);
+	}, 1200);
+	var timerAnimalesE = setTimeout(function() {
+		$('.imgObjeto').fadeIn(500);
+		$('.marca').hide();
+		clearTimeout(timerAnimalesE);
+	}, 500);
+}//animalesEntrada
+
+function pant01() {
+	score = 0;
+	meta = 3;
+	instruccion = '#txAgua';
+	animalesEntrada();
+}
+function pant02() {
+	score = 0;
+	meta = 1;
+	instruccion = '#txPelo';
+	animalesEntrada();
+}
+function pant03() {
+	score = 0;
+	meta = 1;
+	instruccion = '#txPuente';
+	animalesEntrada();
+}
+function pant04() {
+	score = 0;
+	meta = 1;
+	instruccion = '#txEscamas';
+	animalesEntrada();
+}
+function pant05() {
+	score = 0;
+	meta = 1;
+	instruccion = '#txPlumas';
+	animalesEntrada();
+}
+function pant06() {
+	score = 0;
+	meta = 1;
+	instruccion = '#txVaca';
+	animalesEntrada();
+}
+function pant07() {
+	score = 0;
+	meta = 2; //alert('Meta: ' + meta);
+	instruccion = '#txAereos';
+	animalesEntrada();
+}
+function pantFinal() {
+	var timerPantFinal = setTimeout(function() {
+		proxEjercicio = '03.html';
+		flipPage();
+		clearTimeout(timerPantFinal);
+	}, 1000);
+}
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  //alert(window.orientation); //Announce the new orientation number
+  if (window.orientation == 0){
+	  $("#turnScreen").fadeIn(0);
+  }
+  /*chrome no funciona en esta orientacion
+  if (window.orientation == 180){
+	  $("#turnScreen").fadeIn(0);
+  }*/
+  if (window.orientation == 90){
+	  $("#turnScreen").fadeOut(0);
+  }
+  if (window.orientation == -90){
+	  $("#turnScreen").fadeOut(0);
+  }
+}, false);
+
+$(document).ready(function() {
+	
+	<!-- Carga imagenes :hover al inicio -->
+	/*if (document.images){
+		//
+		/*
+		foto1 = new Image();
+		foto1.src = "assets/ejer_07_top_dino2.png";* /
+	}*/
+	<!-- fin Carga imagenes -->
+	
+	// precarga
+	//eliminamos el scroll de la pagina
+	$("body").css({"overflow-y":"hidden"});
+	//guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+	var alto=$(window).height();
+	//agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+	$("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='img/preload35.gif' /></div>");
+	//le damos el alto
+	$("#pre-load-web").css({height:alto+"px"});
+	//esta sera la capa que esta dento de la capa que muestra un gif
+	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
+	// fin precarga
+	
+	if (window.orientation == 0){
+		$("#turnScreen").fadeIn(0);
+	}
+	
+	/* modal dialogs */
+	//select all the a tag with name equal to modal
+	$('a[name=modal]').click(function(e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		//Get the A tag
+		var id = $(this).attr('href');
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(300);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(300); 
+	
+	});
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+
+	$(window).resize(function () {
+	 
+ 		var box = $('#boxes .window');
+ 
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+      
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+               
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+        //Set the popup window to center
+        box.css('top',  winH/2 - box.height()/2);
+        box.css('left', winW/2 - box.width()/2);
+	 
+	});
+	/* fin modal dialogs */
+		
+}); <!--/fin document ready-->
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="contenido">
+	
+    <div id="general">
+		
+		<div id="respuestaOk" class="pantallas">
+        	<div class="retro">
+				<div id="icoOk" class="icoGrande"></div>
+				<a id="icoClose" class="icoGrande" onclick="closeOk();" href="javascript:void(0)"></a>
+				Seleccionó de forma correcta los objetos según la posición.
+			</div><!--/retro-->
+			<a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:70px;"></a>
+		</div><!--/respuestaOk-->
+		
+		<div id="pantalla07" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="GimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="GimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="GimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="GimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="GimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txAereos" class="txBoxes">Seleccione los animales aéreos que están junto a la serpiente.</div>
+			
+		</div><!--/fin pantalla07-->
+        
+        <div id="pantalla06" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="FimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapOk(this.id)">	 <div class="marca marcaOk"></div>	</a>
+            <a id="FimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="FimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="FimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txVaca" class="txBoxes">Seleccione el animal terrestre que está en medio del cerdo y el perico.</div>
+			
+		</div><!--/fin pantalla06-->
+        
+        <div id="pantalla05" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="EimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="EimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="EimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="EimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txPlumas" class="txBoxes">Seleccione el animal con plumas que está atrás del cerdo.</div>
+			
+		</div><!--/fin pantalla05-->
+		
+        <div id="pantalla04" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="DimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="DimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="DimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="DimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txEscamas" class="txBoxes">Seleccione el animal con escamas que está fuera del parque.</div>
+			
+		</div><!--/fin pantalla04-->
+		
+		<div id="pantalla03" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="CimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="CimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="CimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="CimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txPuente" class="txBoxes">Seleccione la planta acuática que está abajo del puente.</div>
+            
+		</div><!--/fin pantalla03-->
+		
+		<div id="pantalla02" class="pantallas">
+         	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <a id="BimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="BimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgAbeja" 	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgRana" 	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgFlor2" 	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgPez2" 	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgTortu" 	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgCoco" 	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgFlor3" 	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="BimgPez1" 	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgFlor1" 	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgFlor4" 	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="BimgFlor5" 	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+            
+            <div id="txPelo" class="txBoxes">Seleccione el animal con pelo que está adelante del caballo.</div>
+            
+		</div><!--/fin pantalla02-->
+		
+		<div id="pantalla01" class="pantallas">
+        	
+        	<a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+			
+			<a id="AimgFoca" 	 class="imgObjeto imgFoca" 		href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="AimgYama" 	 class="imgObjeto imgYama" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgHorse" 	 class="imgObjeto imgHorse" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgCaracol1" class="imgObjeto imgCaracol1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgBird1" 	 class="imgObjeto imgBird1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgBird2" 	 class="imgObjeto imgBird2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgMari" 	 class="imgObjeto imgMari" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgAvestruz" class="imgObjeto imgAvestruz" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgPig" 	 class="imgObjeto imgPig" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgCow" 	 class="imgObjeto imgCow" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgAbeja"  	 class="imgObjeto imgAbeja" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgPeri" 	 class="imgObjeto imgPeri" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgCaracol2" class="imgObjeto imgCaracol2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgRana"	 class="imgObjeto imgRana" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgFlor2"	 class="imgObjeto imgFlor2" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgPez2"	 class="imgObjeto imgPez2" 		href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgTortu"	 class="imgObjeto imgTortu" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgCoco"	 class="imgObjeto imgCoco" 		href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="AimgFlor3"	 class="imgObjeto imgFlor3" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+			<a id="AimgPez1"	 class="imgObjeto imgPez1" 		href="javascript:void(0)" onclick="tapOk(this.id)"	><div class="marca marcaOk"></div>	</a>
+            <a id="AimgFlor1"	 class="imgObjeto imgFlor1" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgFlor4"	 class="imgObjeto imgFlor4" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a>
+            <a id="AimgFlor5"	 class="imgObjeto imgFlor5" 	href="javascript:void(0)" onclick="tapNoOk(this.id)"><div class="marca marcaNoOk"></div></a><!---->
+			
+            <div id="txAgua" class="txBoxes">Seleccione los animales dentro del agua.</div>
+			
+        </div><!--/fin pantalla01-->
+		
+		<div id="pantalla00" class="pantallas">
+			
+			<div id="welcome">
+				
+                <div id="icoInfo" class="icoGrande"></div>
+				<a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
+                
+                <div id="tituloApp">Nociones de posición</div>
+                <div id="instru">Seleccione los objetos según se le solicita</div>
+				
+			</div><!--/fin welcome-->
+            
+			<a href="#dialog2" name="modal" id="logoAbajoLPT"></a>
+			
+		</div><!--/fin pantalla00-->
+        
+	</div><!--/fin general-->
+	
+    <!--
+	<div id="boxNext">
+		
+		<h2>¡Felicidades!</h2>
+		<br />
+		Seleccionó correctamente los elementos.
+        <br />
+        Pulse el botón para continuar.
+        <br /><br />
+        <a href="javascript:var proxEjercicio = '02.html'" onClick="flipPage();" class="nextbtn">Siguiente</a>
+		
+	</div><!-- fin boxNext -->
+	
+	<div id="boxes"><!-- modal -->
+		<div id="dialog2" class="window">
+			
+			<img src="img/logo_lpt.png" width="384" height="83" alt="Libros para Todos | Grupo Nación" id="logoCreditos" />
+			<br /><br />
+			<div id="creditosH">
+				Libros para todos Grupo Nación &reg;
+				<br />
+				Contáctenos 800 366	2636 &bull; <a href="mailto:librosparatodoscr@nacion.com" style="color:#09C;">librosparatodoscr@nacion.com</a>
+				<br />
+				<a href="http://www.librosparatodoscr.com" target="_blank">www.librosparatodoscr.com</a>
+			</div><!-- fin creditosH -->
+			
+			<div id="creditosB">
+				<strong style="color:#09C;">Edici&oacute;n</strong> Grupo Naci&oacute;n GN S.A. 
+				&bull;
+				<strong style="color:#09C;">Gerente Corporativa de Estrategia</strong> Elvira Sabor&iacute;o Dobles
+				&bull;
+				<strong style="color:#09C;">Jefe de Libros para Todos</strong> Hanie Cordero Calder&oacute;n
+				&bull;
+				<strong style="color:#09C;">Supervisor Editorial</strong> Pamela Le&oacute;n C&eacute;spedes 
+				&bull;
+				<strong style="color:#09C;">Editora Ejecutiva</strong> D&eacute;bora Rojas Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Coordinador de dise&ntilde;o</strong> Laura V&aacute;zques Alvarado
+				&bull;
+				<strong style="color:#09C;">Dise&ntilde;o</strong> Carlos Blanco Alvarado
+				&bull;
+				<strong style="color:#09C;">Ilustraci&oacute;n</strong> Sandra Ardila Z&uacute;&ntilde;iga / Ang&eacute;lica Ruiz Rodr&iacute;guez
+				&bull;
+				<strong style="color:#09C;">Programaci&oacute;n</strong> David Herrera Cordero
+			</div><!-- fin creditosB -->
+			
+			<div id="creditosB" style="border-bottom:none;">
+				Quedan reservados los derechos sobre la presente edición.
+				Se prohíbe su reproducción sin el permiso previo y por escrito de <strong>Grupo Nación GN S.A.</strong>
+				<br /><br />
+				Las fotografías utilizadas en este material tienen fines educativos / Fotografías: www.shutterstock.com &bull; www.thinkstock.com <!--&bull; Archivo Grupo Nación GN S.A.-->
+			</div><!-- fin creditosB -->
+			
+			<a  href="javascript:void(0)" class="close" id="btCloseCredits"></a>
+		</div>
+		<!-- Mask to cover the whole screen -->
+		<div id="mask"></div>
+	</div><!-- fin boxes modal -->
+
+</div><!-- fin contenido -->
+
+<div id="turnScreen"></div>
+
+<script language="Javascript">
+	document.oncontextmenu = function(){return false};
+	document.onselectstart = function(){return false};
+	//document.onkeydown = function(){return false};
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-attachment:fixed;
+	
+	background-color:#FFEFBF;
+	background-image:url(../img/e05/bg_grad_01.jpg);
+	
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	background-size:cover;
+	-moz-background-size:cover;
+	-webkit-background-size:cover;
+}
+
+#general { /* contiene objetos evita scroll */
+	/*background:#FFF;*/
+}
+
+.pantallas {
+	/*background:#999;*/
+	width:960px;
+	height:600px;
+	margin:-650px auto 0px auto;
+}
+
+.retro {
+	margin:-150px 0px 0px -315px;
+}
+
+#pantalla00 { /* contiene a #welcome */
+	background:none;
+	display:block;
+	margin-top:0px;
+}
+
+.txBoxes {
+	background-color:#EEEEEE;
+	display:none;
+	
+	position:absolute;
+	top:320px;
+	right:0px;
+	
+	width:360px;
+	padding:20px;
+	
+	font-size:42px;
+	line-height:48px;
+	color:#444444;
+	text-align:center;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border-radius:20px;
+}
+
+.imgObjeto {
+	/*background-color:#FFF;*/
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	display:none;
+	position:absolute;
+}
+.imgObjeto:hover {
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity:0.8;
+	opacity:0.8;
+}
+
+.marca {
+	background-position:top left;
+	background-repeat:no-repeat;
+	display:none;
+	position:absolute;
+	overflow:visible;
+	top:50%;
+	left:50%;
+	width:48px;
+	height:48px;
+	margin:-24px 0px 0px -24px;
+}
+.marcaOk {
+	background-image:url(../img/e05/marcaOk.png);
+}
+.marcaNoOk {
+	background-image:url(../img/e05/marcaNoOk.png);
+}
+
+.imgPescado {
+	background-image:url(../img/e05/imgPescado.png);
+	top:71px;
+	left:40px;
+	width:374px;
+	height:148px;
+}
+.imgHelado {
+	background-image:url(../img/e05/imgHelado.png);
+	top:35px;
+	left:550px;
+	width:316px;
+	height:236px;
+}
+.imgGalletas {
+	background-image:url(../img/e05/imgGalletas.png);
+	top:276px;
+	left:130px;
+	width:314px;
+	height:228px;
+}
+.imgQuesos {
+	background-image:url(../img/e05/imgQuesos.png);
+	top:60px;
+	left:100px;
+	width:265px;
+	height:248px;
+}
+.imgLacteos {
+	background-image:url(../img/e05/imgLacteos.png);
+	top:60px;
+	left:450px;
+	width:310px;
+	height:236px;
+}
+.imgMantequilla {
+	background-image:url(../img/e05/imgMantequilla.png);
+	top:350px;
+	left:130px;
+	width:338px;
+	height:193px;
+}
+.imgTomate1 {
+	/*background-color:#CCC;*/
+	background-image:url(../img/e05/imgTomate.png);
+	top:80px;
+	left:70px;
+	width:290px;
+	height:190px;
+}
+.imgSteak {
+	background-image:url(../img/e05/imgSteak.png);
+	top:60px;
+	left:500px;
+	width:347px;
+	height:185px;
+}
+.imgOmelette {
+	background-image:url(../img/e05/imgOmelette.png);
+	top:320px;
+	left:100px;
+	width:360px;
+	height:178px;
+}
+.imgChuleta {
+	/*background-color:#999;*/
+	background-image:url(../img/e05/imgChuleta.png);
+	top:60px;
+	left:50px;
+	width:324px;
+	height:198px;
+}
+.imgTomate2 {
+	/*background-color:#CCC;*/
+	background-image:url(../img/e05/imgTomate.png);
+	top:60px;
+	left:530px;
+	width:290px;
+	height:190px;
+}
+.imgHamburger {
+	background-image:url(../img/e05/imgHamburger.png);
+	top:300px;
+	left:100px;
+	width:318px;
+	height:206px;
+}
+.imgPina {
+	background-image:url(../img/e05/imgPina.png);
+	top:200px;
+	left:30px;
+	width:292px;
+	height:384px;
+}
+.imgHotdog {
+	background-image:url(../img/e05/imgHotdog.png);
+	top:20px;
+	left:280px;
+	width:240px;
+	height:180px;
+}
+.imgManzanas {
+	background-image:url(../img/e05/imgManzanas.png);
+	top:20px;
+	left:540px;
+	width:332px;
+	height:217px;
+}
+
