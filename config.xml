@@ -9,6 +9,9 @@
 <gap:splash src="phoneGap/MDPI_landscape.png"  gap:platform="android" gap:density="mdpi" />
 <gap:splash src="phoneGap/HDPI_landscape.png"  gap:platform="android" gap:density="hdpi" />
 <gap:splash src="phoneGap/XHDPI_landscape.png" gap:platform="android" gap:density="xhdpi" />
+
+<gap:platform name="android" />
+
 <description>
 Juguemos con las Nociones Matemáticas es una aplicación para aprender conceptos de tamaño, posición, longitud, anchura, distancia, cantidad y relaciones unívocas. Todo a través de amigables juegos y divertidos escenarios. Una iniciativa de Libros para Todos de Grupo Nación.
 </description>

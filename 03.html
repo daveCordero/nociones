@@ -3,8 +3,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.488, maximum-scale=0.488">
+<!-- meta se define en document ready
+<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.488, maximum-scale=0.488">-->
 
 <title>Nociones de longitud y anchura</title>
 
@@ -218,6 +218,30 @@ window.addEventListener("orientationchange", function() {
 }, false);
 
 $(document).ready(function() {
+	
+	
+	//define meta viewport scale
+	if ( screen.width > 1100 ) {
+		//alert('mayor que 1100');
+		$("head").append('<meta name="viewport" content="initial-scale=1.1, maximum-scale=1.1, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 1100) && (screen.width >= 1000) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 1000) && (screen.width >= 900) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.9, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 900) && (screen.width >= 800) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.8, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 800) && (screen.width >= 700) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.7, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 700) && (screen.width >= 600) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.6, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 600) && (screen.width >= 500) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.5, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 500) && (screen.width >= 400) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.4, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	} else if ( (screen.width < 400) && (screen.width >= 300) ) {
+		$("head").append('<meta name="viewport" content="initial-scale=.3, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+	}//if screen.width
+	
 	
 	<!-- Carga imagenes :hover al inicio -->
 	/*if (document.images){
