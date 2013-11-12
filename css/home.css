@@ -2,10 +2,8 @@
 /* CSS Document */
 
 body {
-	background-attachment:fixed;
+	/*background-attachment:fixed;
 	background-color:#FFF;
-	/*background-image:url(../img/bgfull.jpg);
-	background-image:url(../img/bgfull_2.jpg);*/
 	background-image:url(../img/bg_grad_01.jpg);
 	
 	background-position:top center;
@@ -13,7 +11,24 @@ body {
 	 
 	background-size:cover;
 	-moz-background-size:cover;
-	-webkit-background-size:cover;
+	-webkit-background-size:cover;*/
+	
+	background-color:#B6D6D9;/*celeste*/
+	background-repeat:no-repeat;
+	background-position:center;
+	
+	margin: 0px; /* for IE6 / IE7 */
+	padding:0px;
+	
+	/*overflow:hidden !important;
+	
+	font-size:14px;
+	font-family: 'Muli', sans-serif;
+	font-weight: 400;
+	
+	color:#333;
+	
+	height:100% !important;*/
 }
 
 #homebg {
