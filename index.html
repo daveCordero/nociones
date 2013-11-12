@@ -237,8 +237,9 @@ $(document).ready(function() {
 	
 	//define meta viewport scale
 	if ( screen.width > 1100 ) {
-		alert('> 1100');
-		$("head").append('<meta name="viewport" content="initial-scale=1.15, maximum-scale=1.15, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
+		//alert('> 1100');
+		alert('> 1.18');
+		$("head").append('<meta name="viewport" content="initial-scale=1.18, maximum-scale=1.18, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
 	} else if ( (screen.width < 1100) && (screen.width >= 1000) ) {
 		$("head").append('<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=yes, height=device-height, width=device-width, target-densityDpi=device-dpi" />');
 	} else if ( (screen.width < 1000) && (screen.width >= 900) ) {
