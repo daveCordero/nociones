@@ -3,18 +3,19 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=1050px, target-densitydpi=device-dpi, user-scalable=no, initial-scale=0.7, maximum-scale=0.7">
+<!--<meta name="viewport" content="width=1050px, target-densitydpi=device-dpi, user-scalable=no, initial-scale=0.7, maximum-scale=0.7">-->
+<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.488, maximum-scale=0.488">
 
-<title>Correspondencia uno a uno</title>
+<title>Nociones de longitud y anchura</title>
 
 
 <link href="css/global.css" rel="stylesheet" type="text/css" />
-<link href="css/e06.css" rel="stylesheet" type="text/css" />
+<link href="css/e03.css" rel="stylesheet" type="text/css" />
 
 
 <script type="text/javascript" src="js/googleapis/jquery.min.js"></script>
 <script type="text/javascript" src='js/jquery.transit.min.js'></script>
-<script type="text/javascript" src="js/kinetic-v4.6.0.min.js"></script>
+<script type="text/javascript" src="js/kinetic-v4.7.4.min.js"></script>
 
 
 <script language="javascript" type="text/javascript">
@@ -26,7 +27,7 @@ audioElement.setAttribute('autoplay', 'autoplay');
 $.get();
 
 function aubtn() {
-	audioElement.setAttribute('src', 'audio/plop.mp3');
+	audioElement.setAttribute('src', 'audio/plop.ogg');
 	audioElement.play();
 }
 
@@ -61,7 +62,25 @@ function txBox() {
 function closeWelcome() {
 	$("#pantalla00").animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
 	//alert('pantallaActual: ' + proxPantalla);
-	pant01();
+	switch(proxPantalla) {
+		
+		case 1:
+			pant01();
+		break;
+		
+		case 2:
+			pant02();
+		break;
+		
+		case 3:
+			pant03();
+		break;
+		
+		case 4:
+			pant04();
+		break;
+		
+	} //fin switch
 	$(pantallaActual).css({ display:'block' });
 	$(pantallaActual).animate({ 'margin-top':0 }, 150 );
 }
@@ -70,7 +89,25 @@ var pantallaActual = '';
 
 function goInfo() {
 	//alert('Pantalla Actual: ' + proxPantalla);
-	pantallaActual = '#pantalla01';
+	switch(proxPantalla) { //devuelve valor Pantalla Actual
+		
+		case 1:
+			pantallaActual = '#pantalla01';
+		break;
+		
+		case 2:
+			pantallaActual = '#pantalla02';
+		break;
+		
+		case 3:
+			pantallaActual = '#pantalla03';
+		break;
+		
+		case 4:
+			pantallaActual = '#pantalla04';
+		break;
+		
+	} //fin switch
 	$(pantallaActual).animate({ 'margin-top':650 }, 150, function(){ $(this).css({ display:'none' }); });
 	$("#pantalla00").css({ display:'block' });
 	$("#pantalla00").animate({ 'margin-top':10 }, 300);
@@ -78,7 +115,45 @@ function goInfo() {
 
 function closeOk() {
 	$("#respuestaOk").fadeOut(100);
-	pantFinal();
+	switch(proxPantalla) {
+		
+		case 1:
+			pantallaChao   = '#pantalla01';
+			pantallaViene  = '#pantalla02';
+			pant02();
+		break;
+		
+		case 2:
+			pantallaChao   = '#pantalla02';
+			pantallaViene  = '#pantalla03';
+			pant03();
+		break;
+		
+		case 3:
+			pantallaChao   = '#pantalla03';
+			pantallaViene  = '#pantalla04';
+			pant04();
+		break;
+		
+		case 4:
+			/*pantallaChao   = '#pantalla04';
+			pantallaViene  = '#pantalla04';*/
+			pantFinal();
+		break;
+		
+	} //fin switch
+	proxPantalla++; //alert ('proxPantalla: ' + proxPantalla);
+	
+	var timerPantallaChao = setTimeout(function() {
+		$(pantallaChao).animate({ 'margin-top':650 }, 200, function(){ $(this).css({ display:'none' }); });
+	}, 300);
+	var timerPantallaViene = setTimeout(function() {
+		$('#container').remove();
+		$("#pantalla02").add("<div id='container'></div>");
+		$(pantallaViene).css({ display:'block' });
+		$(pantallaViene).animate({ 'margin-top':0 }, 200 );
+		clearTimeout(timerPantallaChao);
+	}, 500);
 }
 
 function pant01() {
@@ -94,45 +169,180 @@ function pant01() {
 	});
 	
 	//posicion animal imgs
-	xCord1 = 15; 		yCord1 = 160;
-	xCord2 = 205; 		yCord2 = 160;
-	xCord3 = 395; 		yCord3 = 160;
-	xCord4 = 585; 		yCord4 = 160;
-	xCord5 = 775; 		yCord5 = 160;
+	xCord1 = 524; 		yCord1 = 100;
+	xCord2 = 622; 		yCord2 = 320;
+	xCord3 = 740; 		yCord3 = 40;
+	xCord4 = 847; 		yCord4 = 270;
 	
 	//posicion black imgs
-	xbCord1 = 205; 		ybCord1 = 340;  //img1
-	xbCord2 = 395; 		ybCord2 = 340;  //img2
-	xbCord3 = 15;		ybCord3 = 340;	//img3
-	xbCord4 = 775; 		ybCord4 = 340;  //img4
-	xbCord5 = 585; 		ybCord5 = 340;  //img5
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = -200; 	ybCord2 = 0;//g_B
+	xbCord3 = 333; 		ybCord3 = 110;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
 	
 	var sources = {
 		beach: 		'bg.png',
 		
-		img1: 		'imgVaca.png',
-		img1_glow: 	'imgVaca_glow.png',
-		img1_black: 'imgVaca_black.png',
+		g_A: 		'g1_verde2.png',
+		g_A_glow: 	'g1_verde2_glow.png',
+		g_A_black: 	'g1_verde2_black.png',
 		
-		img2: 		'imgGallo.png',
-		img2_glow: 	'imgGallo_glow.png',
-		img2_black: 'imgGallo_black.png',
+		g_B: 		'g1_azul.png',
+		g_B_glow: 	'g1_azul_glow.png',
+		g_B_black: 	'g1_azul_black.png',
 		
-		img3: 		'imgOveja.png',
-		img3_glow: 	'imgOveja_glow.png',
-		img3_black: 'imgOveja_black.png',
+		g_C: 		'g1_morado.png',
+		g_C_glow: 	'g1_morado_glow.png',
+		g_C_black: 	'g1_morado_black.png',
 		
-		img4: 		'imgCerdo.png',
-		img4_glow: 	'imgCerdo_glow.png',
-		img4_black: 'imgCerdo_black.png',
-		
-		img5: 		'imgPescado.png',
-		img5_glow: 	'imgPescado_glow.png',
-		img5_black: 'imgPescado_black.png',
+		g_D: 		'g1_rojo.png',
+		g_D_glow: 	'g1_rojo_glow.png',
+		g_D_black: 	'g1_rojo_black.png',
 	};//fin sources*/
 	
 	loadImages(sources, initStage);//kinetic
 }//fin pant01
+
+function pant02(){
+	pantallaActual = '#pantalla02';
+	
+	txblock = '#txG2';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container2',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 720; 		yCord1 = 50;
+	xCord2 = 540; 		yCord2 = 280;
+	xCord3 = 800; 		yCord3 = 300;
+	xCord4 = 520; 		yCord4 = 10;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = 270; 	ybCord2 = 100;//g_B
+	xbCord3 = -200; 	ybCord3 = 110;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
+	
+	var sources = {
+		beach: 		'bg2.png',
+		
+		g_A: 		'g2_amarillo.png',
+		g_A_glow: 	'g2_amarillo_glow.png',
+		g_A_black: 	'g2_amarillo_black.png',
+		
+		g_B: 		'g2_azul.png',
+		g_B_glow: 	'g2_azul_glow.png',
+		g_B_black: 	'g2_azul_black.png',
+		
+		g_C: 		'g2_morado.png',
+		g_C_glow: 	'g2_morado_glow.png',
+		g_C_black: 	'g2_morado_black.png',
+		
+		g_D: 		'g2_rojo.png',
+		g_D_glow: 	'g2_rojo_glow.png',
+		g_D_black: 	'g2_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant02
+
+function pant03() {
+	pantallaActual = '#pantalla03';
+	
+	txblock = '#txG3';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container3',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 524; 		yCord1 = 100;
+	xCord2 = 622; 		yCord2 = 320;
+	xCord3 = 740; 		yCord3 = 40;
+	xCord4 = 847; 		yCord4 = 270;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = 347;	 	ybCord2 = 150;//g_B
+	xbCord3 = -200; 	ybCord3 = 0;//g_C
+	xbCord4 = -200; 	ybCord4 = 0;//g_D
+	
+	var sources = {
+		beach: 		'bg3.png',
+		
+		g_A: 		'g1_verde.png',
+		g_A_glow: 	'g1_verde_glow.png',
+		g_A_black: 	'g1_verde_black.png',
+		
+		g_B: 		'g1_azul.png',
+		g_B_glow: 	'g1_azul_glow.png',
+		g_B_black: 	'g1_azul_black.png',
+		
+		g_C: 		'g1_amarillo.png',
+		g_C_glow: 	'g1_amarillo_glow.png',
+		g_C_black: 	'g1_amarillo_black.png',
+		
+		g_D: 		'g1_rojo.png',
+		g_D_glow: 	'g1_rojo_glow.png',
+		g_D_black: 	'g1_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant03
+
+function pant04() {
+	pantallaActual = '#pantalla04';
+	
+	txblock = '#txG4';
+	txBox();
+	
+	stageB = new Kinetic.Stage({
+		container: 'container4',
+		width: 960,
+		height: 600,
+	});
+	
+	//posicion animal imgs
+	xCord1 = 524; 		yCord1 = 70;
+	xCord2 = 622; 		yCord2 = 280;
+	xCord3 = 710; 		yCord3 = 40;
+	xCord4 = 800; 		yCord4 = 250;
+	
+	//posicion black imgs
+	xbCord1 = -200; 	ybCord1 = 0;//g_A
+	xbCord2 = -200; 	ybCord2 = 0;//g_B
+	xbCord3 = -200;		ybCord3 = 0;//g_C
+	xbCord4 = 304;	 	ybCord4 = 124;//g_D
+	
+	var sources = {
+		beach: 		'bg4.png',
+		
+		g_A: 		'g4_verde.png',
+		g_A_glow: 	'g4_verde_glow.png',
+		g_A_black: 	'g4_verde_black.png',
+		
+		g_B: 		'g4_azul.png',
+		g_B_glow: 	'g4_azul_glow.png',
+		g_B_black: 	'g4_azul_black.png',
+		
+		g_C: 		'g4_morado.png',
+		g_C_glow: 	'g4_morado_glow.png',
+		g_C_black: 	'g4_morado_black.png',
+		
+		g_D: 		'g4_rojo.png',
+		g_D_glow: 	'g4_rojo_glow.png',
+		g_D_black: 	'g4_rojo_black.png',
+	};//fin sources*/
+	
+	loadImages(sources, initStage);//kinetic
+}//fin pant04
 
 function pantFinal() {
 	var timerPantFinal = setTimeout(function() {
@@ -265,7 +475,7 @@ $(document).ready(function() {
 <!-- arrastre -->
 <script defer="defer">
 function loadImages(sources, callback) {
-	var assetDir = 'img/e06/';
+	var assetDir = 'img/e03/';
 	var images = {};
     var loadedImages = 0;
 	var numImages = 0;
@@ -289,6 +499,8 @@ function isNearOutline(animal, outline) {
     var ax = a.getX();
     var ay = a.getY();
     
+	alert('ax: ' + ax);
+	
 	if(ax > o.x - 80 && ax < o.x + 80 && ay > o.y - 80 && ay < o.y + 80) {
     	return true;
 	}
@@ -315,19 +527,17 @@ function initStage(images) {
 	
 	// image positions
 	var animals = {
-		img1: 	{ x: xCord1, y: yCord1 },
-		img2: 	{ x: xCord2, y: yCord2 },
-		img3: 	{ x: xCord3, y: yCord3 },
-		img4: 	{ x: xCord4, y: yCord4 },
-		img5: 	{ x: xCord5, y: yCord5 }
+		g_A: 	{ x: xCord1, y: yCord1 },
+		g_B: 	{ x: xCord2, y: yCord2 },
+		g_C: 	{ x: xCord3, y: yCord3 },
+		g_D: 	{ x: xCord4, y: yCord4 }
 	};//fin animals
 	
 	var outlines = {
-		img1_black: 	{ x: xbCord1, y: ybCord1 },
-		img2_black: 	{ x: xbCord2, y: ybCord2 },
-		img3_black: 	{ x: xbCord3, y: ybCord3 },
-		img4_black: 	{ x: xbCord4, y: ybCord4 },
-		img5_black: 	{ x: xbCord5, y: ybCord5 }
+		g_A_black: 	{ x: xbCord1, y: ybCord1 },
+		g_B_black: 	{ x: xbCord2, y: ybCord2 },
+		g_C_black: { x: xbCord3, y: ybCord3 },
+		g_D_black: 	{ x: xbCord4, y: ybCord4 } 
 	};//fin outlines
 	
 	// create draggable animals
@@ -372,7 +582,7 @@ function initStage(images) {
 					animal.inRightPlace = true;
 					//fin nuevo
 					
-					if(++score >= 5) {
+					if(++score >= 1) {
 						var tscore = setTimeout(function() {
 							$("#respuestaOk").fadeIn(100);
 							//$('#container').remove();
@@ -389,7 +599,7 @@ function initStage(images) {
 					}, 50);
 					//fin disable drag and drop
 					
-					audioElement.setAttribute('src', 'audio/btn.mp3');
+					audioElement.setAttribute('src', 'audio/btn.ogg');
 					audioElement.play();
 					
 				} else {
@@ -465,20 +675,52 @@ function initStage(images) {
             <div class="retro">
                 <div id="icoOk" class="icoGrande"></div>
                 <a id="icoClose" class="icoGrande" onclick="closeOk();" href="javascript:void(0)"></a>
-                ¡Muy bien!<br />Relacionó los animales con los productos correctos
-                <!--<a id="btnAgain" href="javascript:var proxEjercicio = 'index.html" onclick="flipPage();">¡Jugar de nuevo!</a>-->
+                Seleccionó de forma correcta los objetos según el tamaño.
             </div><!--/retro-->
-            <a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:100px;"></a>
+            <a href="#dialog2" name="modal" id="logoAbajoLPT" style="margin-top:70px;"></a>
         </div><!--/respuestaOk-->
 		
-		<div id="pantalla01" class="pantallas">
-			
-			<a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+		<div id="pantalla04" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+		
+			<div id="txG4" class="txBoxes">El globo amarillo es igual de ancho que</div>
+            
+            <div id="container4"></div>
+            
+         </div><!--/fin pantalla04-->
+         
+        <div id="pantalla03" class="pantallas">
+        	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+		
+			<div id="txG3" class="txBoxes">El globo morado es más largo que</div>
+            
+            <div id="container3"></div>
+            
+         </div><!--/fin pantalla03-->
+         
+         <div id="pantalla02" class="pantallas">
+         	
+            <a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
 			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
 			
-			<div id="txG1" class="txBoxes">Arrastre cada animal a su respectivo producto</div>
+			<div id="txG2" class="txBoxes">El globo verde es menos ancho que</div>
+            
+            <div id="container2"></div>
 			
-			<div id="container1"></div>
+		</div><!--/fin pantalla02-->
+         
+		<div id="pantalla01" class="pantallas">
+            
+			<a class="icoPeq icoInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
+			<a class="icoPeq icoHomePeq" href="javascript:var proxEjercicio = 'index.html'" onClick="flipPage();"></a>
+            
+            <div id="txG1" class="txBoxes">El globo amarillo es tan corto como</div>
+            
+            <div id="container1"></div>
 			
 		</div><!--/fin pantalla01-->
                 
@@ -489,8 +731,8 @@ function initStage(images) {
                 <div id="icoInfo" class="icoGrande"></div>
                 <a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
                 
-                <div id="tituloApp">Correspondencia uno a uno</div>
-                <div id="instru">Relacione cada animal con el producto que brinda al ser humano</div>
+                <div id="tituloApp">Nociones de<br />longitud y anchura</div>
+                <div id="instru">Agrupe los globos según se le solicita</div>
 				
 			</div><!--/fin welcome-->
             

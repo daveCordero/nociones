@@ -1,0 +1,158 @@
+/*
+Darko Bunic
+http://www.redips.net/
+Jan, 2010.
+*/
+
+.tableDrag {
+	/*background:#333;*/
+	
+	display:block;
+	position:absolute;
+	
+	top:40px;
+	left:0px;
+}
+
+/* drag objects (DIV inside table cells) */
+.drag {
+	cursor: move;
+	margin: auto;
+	/*z-index: 10;*/
+	
+	border:none !important;
+	display:block;
+	width: 192px;
+	height:250px;
+	
+	/*opacity: 0.7;
+	filter: alpha(opacity=70);
+	/* without width, IE6/7 will not apply filter/opacity to the element ?! */
+	/* IE needs element layout */
+	/*width: 150px;
+	height: 100px;
+	line-height: 25px;
+	/* round corners * /
+	border-radius: 4px; /* Opera, Chrome * /
+	-moz-border-radius: 4px; /* FF */
+}
+
+/* tables */
+div#drag table {
+	/*background-color: #eee;*/
+	border-collapse: collapse;
+	margin: auto;
+}
+
+/* table cells */
+div#drag tr {
+	/*background-color:#6C0 !important;
+	height:250px !important;*/
+}
+div#drag td {
+	width:192px !important;
+	height:250px !important;
+}
+
+/* green objects 
+.green {
+	background-color: #AFD0A7;
+}*/
+
+/* orange objects 
+.orange {
+	background-color: #DDC5B5;
+}*/
+
+/* blank cells (to create gap between left column and message row) */
+.blank {
+	/*background-color:white;*/
+	width: 192px;
+	height:250px;
+}
+
+.mark {
+	/*background-color:white;*/
+	width: 192px;
+	height:250px;
+}
+
+/* left column and corners in main table */
+.dark {
+	background-color:#e0e0e0;
+}
+
+/* green cell */
+.green_cell {
+	background:url(../img/e03/g0_blanco.png) no-repeat center;
+}
+
+/* orange cell */
+.orange_cell {
+	background-color:#DDC5B5;
+}
+
+.g1_amarillo {
+	background:url(../img/e03/g1_amarillo.png) no-repeat center;
+}
+.g1_verde {
+	background:url(../img/e03/g1_verde.png) no-repeat center;
+}
+.g1_azul {
+	background:url(../img/e03/g1_azul.png) no-repeat center;
+}
+.g1_morado {
+	background:url(../img/e03/g1_morado.png) no-repeat center;
+}
+.g1_rojo {
+	background:url(../img/e03/g1_rojo.png) no-repeat center;
+}
+
+.g2_amarillo {
+	background:url(../img/e03/g2_amarillo.png) no-repeat center;
+}
+.g2_verde {
+	background:url(../img/e03/g2_verde.png) no-repeat center;
+}
+.g2_azul {
+	background:url(../img/e03/g2_azul.png) no-repeat center;
+}
+.g2_morado {
+	background:url(../img/e03/g2_morado.png) no-repeat center;
+}
+.g2_rojo {
+	background:url(../img/e03/g2_rojo.png) no-repeat center;
+}
+
+.g3_amarillo {
+	background:url(../img/e03/g1_amarillo.png) no-repeat center;
+}
+.g3_verde {
+	background:url(../img/e03/g1_verde.png) no-repeat center;
+}
+.g3_azul {
+	background:url(../img/e03/g1_azul.png) no-repeat center;
+}
+.g3_morado {
+	background:url(../img/e03/g1_morado.png) no-repeat center;
+}
+.g3_rojo {
+	background:url(../img/e03/g1_rojo.png) no-repeat center;
+}
+
+.g4_amarillo {
+	background:url(../img/e03/g4_amarillo.png) no-repeat center;
+}
+.g4_verde {
+	background:url(../img/e03/g4_verde.png) no-repeat center;
+}
+.g4_azul {
+	background:url(../img/e03/g4_azul.png) no-repeat center;
+}
+.g4_morado {
+	background:url(../img/e03/g4_morado.png) no-repeat center;
+}
+.g4_rojo {
+	background:url(../img/e03/g4_rojo.png) no-repeat center;
+}
+

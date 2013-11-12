@@ -16,7 +16,13 @@ body {
 }
 
 #general { /* contiene objetos evita scroll */
-	/*background:#FFF;*/
+	/*background:#FFF;
+	width:940px;*/
+	left:0;
+	top:50%;
+	width:100%;
+	height:600px;
+	margin:-300px 0px 0px 0px !important;
 }
 
 .pantallas {
@@ -33,24 +39,37 @@ body {
 }
 
 .txBoxes {
-	background-color:#C7E7EB;
+	/*background-color:#C7E7EB;*/
+	background:#FFF;
 	display:none;
 	
 	position:absolute;
-	top:105px;
+	/*top:105px;*/
+	top:115px;
 	right:0px;
 	
 	width:330px;
-	padding:20px;
 	
+	/*padding:20px;
 	font-size:40px;
-	line-height:42px;
+	line-height:42px;*/
+	
+	padding:18px;
+	font-size:34px;
+	line-height:36px;
+	
 	color:#668193;
 	text-align:center;
 	
 	-webkit-border-radius:20px;
 	-moz-border-radius:20px;
 	border-radius:20px;
+	
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity:0.9;
+	opacity:0.9;
 }
 
 .imgObjeto {

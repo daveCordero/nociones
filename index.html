@@ -1,20 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- android -->
-<!--<meta name="viewport" content="height=600, initial-scale=.33, maximum-scale=.33" />
-<meta name="viewport" content="height=600, user-scalable=yes, initial-scale=.4, maximum-scale=.4"> funciona en browser no al 100%
-<meta name="viewport" content="height=device-height">
-<meta name="viewport" content="initial-scale=.2, maximum-scale=.2">
-<meta name="viewport" content="height=1000, user-scalable=no, initial-scale=0.61, maximum-scale=0.61">-- >
-<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.61, maximum-scale=0.61"> <!--funciona en chrome-- >
-<meta name="viewport" content="width=1050px, target-densitydpi=device-dpi, user-scalable=no, initial-scale=0.7, maximum-scale=0.7"> <!--funciona en browser-- >
-<meta name="viewport" content="width=960px, target-densitydpi=device-dpi, user-scalable=no, initial-scale=0.5, maximum-scale=0.5">
-<meta name="viewport" content="width=960px, target-densitydpi=device-dpi, user-scalable=no">
-<meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=0.7, maximum-scale=0.7">-->
-<meta name="viewport" content="width=980px, target-densitydpi=device-dpi">
+<!-- iphone -->
+<meta name="viewport" content="height=device-height, user-scalable=no, initial-scale=0.488, maximum-scale=0.488">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link rel="apple-touch-icon" sizes="57×57" 		href="img/touch-icon-iphone-114.png" />
+<link rel="apple-touch-icon" sizes="114×114" 	href="img/touch-icon-iphone-114.png" />
+<link rel="apple-touch-icon" sizes="72×72" 		href="img/touch-icon-ipad-144.png" />
+<link rel="apple-touch-icon" sizes="144×144" 	href="img/touch-icon-ipad-144.png" />
 
 <title>Juguemos con las nociones matemáticas</title>
 
@@ -222,16 +219,6 @@ function flipPage(){
 	}, 500, 'out',function(){nextPage();});
 }
 
-function closeWelcome() {
-	$("#pantalla00").fadeOut(300);
-	$("#btnInfoPeq").fadeIn(300);
-}
-
-function goInfo() {
-	$("#pantalla00").fadeIn(300);
-	$("#btnInfoPeq").fadeOut(300);
-}
-
 
 // Listen for orientation changes
 window.addEventListener("orientationchange", function() {
@@ -268,10 +255,10 @@ $(document).ready(function() {
 	$("#imagen-load").css({"margin-top":(alto/2)-30+"px"});
 	// fin precarga
 	
-	/*previene rebote iOS
+	//previene rebote iOS
 	document.body.addEventListener('touchmove', function(event) {
 	  event.preventDefault();
-	}, false);*/
+	}, false);
 	//fin previene rebote iOS
 	
 	if (window.orientation == 0){
@@ -379,46 +366,50 @@ $(document).ready(function() {
 
 <div id="contenido">
 	
-	<div id="homebg">
-		
-		<a class="icoPeq icoInfoPeq" id="btnInfoPeq" href="javascript:void(0)" onclick="goInfo();"></a>
-		<a href="#dialog2" name="modal" id="logoHome"></a>
-		
-		<a class="homefig" href="javascript:void(0)" id="ex01btnbola"   onclick="bolaOver();"   onmouseup="bolaOut();"></a>
-		<a class="homefig" href="javascript:void(0)" id="ex01btnglobo"  onclick="globoOver();"  onmouseup="globoOut();"></a>
-		<a class="homefig" href="javascript:void(0)" id="ex01btnbird"   onclick="birdOver();"   onmouseup="birdOut();"></a>
-		<a class="homefig" href="javascript:void(0)" id="ex01btncometa" onclick="cometaOver();" onmouseup="cometaOut();"></a>
-		<a class="homefig" href="javascript:void(0)" id="ex01btnCono"   onclick="conoOver();"   onmouseup="conoOut();"></a>
-		
-		<div id="ex01bola"></div>
-		<div id="ex01globo"></div>
-		<div id="ex01bird"></div>
-		<div id="ex01cometa"></div>
-		<div id="ex01btnCono"></div>
-		<div id="ex01cono"></div>
-		<div id="manobola"></div>
-		<div id="manoCono"></div>
-		
-		<a href="javascript:var proxPantalla = '01.html'"  onClick="flipPage();" id="homePoptamano" class="homePop"><span>Nociones de</span>tamaño</a>
-		<a href="javascript:var proxPantalla = '02.html'"  onClick="flipPage();" id="homePoplongitud" class="homePop"><span>Nociones de</span>longitud y anchura</a>
-		<a href="javascript:var proxPantalla = '03.html'" onClick="flipPage();" id="homePopPosicion" class="homePop"><span>Nociones de</span>posición</a>
-		<a href="javascript:var proxPantalla = '04.html'"  onClick="flipPage();" id="homePopDistancia" class="homePop"><span>Nociones de</span>distancia</a>
-		<a href="javascript:var proxPantalla = '05.html'" onClick="flipPage();" id="homePopCantidad" class="homePop"><span>Nociones de</span>cantidad</a>
-		
-	
-	</div><!-- fin homebg -->
-    
-    <div id="pantalla00">
+    <div id="general">
         
-        <div id="welcome">
+        <div id="headerA">
             
-            <a id="icoClose" class="icoGrande" onclick="closeWelcome();" href="javascript:void(0)"></a>
-            <div id="tituloApp"><span style="font-size:60px;">Nociones</span> matemáticas</div>
-            <h3>Pulse los elementos en movimiento para ingresar a las pantallas.</h3>
+            <div id="instruEx1" class="instru" style="padding-left:72px; width:640px;">
+                
+                <h3>Juguemos con las nociones matemáticas</h3>
+                <span>
+                    Pulse los elementos en movimiento para ingresar a las pantallas.
+                </span>
+                
+            </div><!-- fin instruEx -->
+            
+            <a href="#dialog2" name="modal" class="logotop" id="logoTopLPT"></a>
         
-        </div><!-- fin welcome -->
+        </div><!-- fin header -->
         
-    </div><!--/pantalla00-->
+        <div id="homebg">
+            
+            <a class="homefig" href="javascript:void(0)" id="ex01btnbola"   onclick="bolaOver();"   onmouseup="bolaOut();"></a>
+            <a class="homefig" href="javascript:void(0)" id="ex01btnglobo"  onclick="globoOver();"  onmouseup="globoOut();"></a>
+            <a class="homefig" href="javascript:void(0)" id="ex01btnbird"   onclick="birdOver();"   onmouseup="birdOut();"></a>
+            <a class="homefig" href="javascript:void(0)" id="ex01btncometa" onclick="cometaOver();" onmouseup="cometaOut();"></a>
+            <a class="homefig" href="javascript:void(0)" id="ex01btnCono"   onclick="conoOver();"   onmouseup="conoOut();"></a>
+            
+            <div id="ex01bola"></div>
+            <div id="ex01globo"></div>
+            <div id="ex01bird"></div>
+            <div id="ex01cometa"></div>
+            <div id="ex01btnCono"></div>
+            <div id="ex01cono"></div>
+            <div id="manobola"></div>
+            <div id="manoCono"></div>
+            
+            <a href="javascript:var proxPantalla = '01.html'"  onClick="flipPage();" id="homePoptamano" class="homePop"><span>Nociones de</span>tamaño</a>
+            <a href="javascript:var proxPantalla = '03.html'"  onClick="flipPage();" id="homePoplongitud" class="homePop"><span>Nociones de</span>longitud y anchura</a>
+            <a href="javascript:var proxPantalla = '02.html'" onClick="flipPage();" id="homePopPosicion" class="homePop"><span>Nociones de</span>posición</a>
+            <a href="javascript:var proxPantalla = '04.html'"  onClick="flipPage();" id="homePopDistancia" class="homePop"><span>Nociones de</span>distancia</a>
+            <a href="javascript:var proxPantalla = '05.html'" onClick="flipPage();" id="homePopCantidad" class="homePop"><span>Nociones de</span>cantidad</a>
+            
+        
+        </div><!-- fin homebg -->
+        
+    </div><!--/fin general-->
     
 	<div id="boxes"><!-- modal -->
 		<div id="dialog2" class="window">

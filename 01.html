@@ -271,8 +271,8 @@ function pantAlfombra() {
 	}, 1100);
 	var timerTxCuadro2 = setTimeout(function() {
 		$("#tagCuadro2").fadeIn(300);
-		$('#imgCuadro2').css({ display:'block' });
-		$('#imgCuadro2').animate({ 'margin-top':0 }, 100 );
+		$('#imgLampara').css({ display:'block' });
+		$('#imgLampara').animate({ 'margin-top':0 }, 100 );
 		clearTimeout(timerTxCuadro2);
 	}, 1200);
 	var timerTxVentana = setTimeout(function() {
@@ -310,7 +310,7 @@ function pantCohete() {
 
 function pantFinal() {
 	var timerPantFinal = setTimeout(function() {
-		proxEjercicio = '02.html';
+		proxEjercicio = 'index.html';
 		flipPage();
 		clearTimeout(timerPantFinal);
 	}, 1000);
@@ -497,15 +497,15 @@ $(document).ready(function() {
             <div id="txAlfombra" class="txBoxes">La alfombra es tan pequeña como</div>
             
             <a id="imgSillon" class="imgObjeto objeto1" href="javascript:void(0)" onclick="tapNoOk();"></a>
-            <a id="imgCuadro2" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapOk();"></a>
+            <a id="imgLampara" class="imgObjeto objeto2" href="javascript:void(0)" onclick="tapOk();"></a>
             <a id="imgVentana" class="imgObjeto objeto3" href="javascript:void(0)" onclick="tapNoOk();"></a>
             
             <div id="tagSillon" class="tagTexto tag1">
 				El sillón
 				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
 			</div>
-            <div id="tagCuadro2" class="tagTexto tag2">
-				El cuadro
+            <div id="tagCuadro2" class="tagTexto tag2" style="font-size:34px; padding:22px 10px 20px 10px;">
+				La lámpara
 				<img src="img/e01/arrowbtnTop.png" class="arrowtx arrowTag" />
 			</div>
             <div id="tagVentana" class="tagTexto tag3">

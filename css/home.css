@@ -353,7 +353,33 @@ body {
 	background-color:#85500F;
 }
 
-#welcome {
+#instruEx1 {
+	background:url(../img/home/icon_top_home.png) no-repeat 4px 4px;
+	display:block;
+	float:left;
+	
+	width:650px;
+	height:48px;
+	
+	margin:0px;
+	padding:17px 0px 0px 55px;
+}
+
+#headerA {
+	background:#FFF;
+	display:block;
+	float:none;
+	clear:both;
+	width:900px;
+	height:65px;
+	margin:0px auto;
+}
+
+
+
+
+
+/*#welcome {
 	width:280px;
 	padding:0px 20px 10px 20px;
 	margin:-100px 0px 0px -360px;
@@ -372,7 +398,54 @@ h3 {
 #tituloApp {
 	font-size:42px;
 	line-height:42px;
+}*/
+#welcome {
+	background:#F4EADD;
+	display:block;
+	
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	width:310px;
+	height:240px;
+	
+	padding:30px 30px 20px 30px;
+	margin:-200px 0px 0px -350px;
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
 }
+
+#tituloApp {
+	/*background:#CCC;*/
+	border-bottom:#DBC1A2 solid 2px;
+	display:block;
+	float:none;
+	clear:both;
+	padding:0px 0px 5px 0px;
+	margin:-40px 0px 20px 0px !important;
+	line-height:60px;
+	font-size:50px;
+	text-align:center;
+	color:#703403;
+}
+
+h3 {
+	margin:0px 0px 10px 0px;
+	font-size:24px;
+	line-height:24px;
+	color:#996633;
+	font-weight:normal;
+	text-align:justify;
+	margin-bottom:5px;
+}
+
+
+
+
 
 .icoGrande {
 	margin:-45px 0px 0px 0px;

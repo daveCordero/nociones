@@ -180,6 +180,9 @@ body {
 #imgTren {
 	background-image:url(../img/e01/tren.png);
 }
+#imgLampara {
+	background-image:url(../img/e01/lampara.png);
+}
 
 .arrowDown {
 	display:block;
