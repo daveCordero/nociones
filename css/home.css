@@ -16,7 +16,7 @@ body {
 	background-image:url(../img/bg_grad_01.jpg);
 	background-color:#B6D6D9;/*celeste*/
 	background-repeat:no-repeat;
-	background-position:center;
+	background-position:center 700;
 	
 	margin: 0px; /* for IE6 / IE7 */
 	padding:0px;
